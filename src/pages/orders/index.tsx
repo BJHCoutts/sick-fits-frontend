@@ -1,3 +1,3 @@
 export default function OrderIndexPage() {
-  return <h1>Order</h1>
+	return <h1>Orders</h1>
 }
