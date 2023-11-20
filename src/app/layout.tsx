@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import StyledComponentsRegistry from './registry'
 
 export const metadata: Metadata = {
 	title: 'Sick Fits',
@@ -13,7 +14,9 @@ export default function RootLayout({
 	return (
 		<>
 			<html lang="en-CA">
-				<body>{children}</body>
+				<body>
+					<StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+				</body>
 			</html>
 		</>
 	)
