@@ -22,8 +22,8 @@ interface IMyApp extends AppProps {
 function myApp({ Component, pageProps, apollo }: IMyApp) {
 	return (
 		<>
-			<GlobalStyle />
 			<ApolloProvider client={apollo}>
+				<GlobalStyle />
 				<Header />
 				<InnerStyles>
 					<Component {...pageProps} />
@@ -39,4 +39,11 @@ const InnerStyles = styled.main`
 	margin: 0 auto;
 	padding: 2rem;
 `
+
+myApp.getInitialProps = async function ({ Component, ctx }) {
+	let pageProps = {}
+	if (Component.getInitialProps) {
+		pageProps = await Component.getInitialProps(ctx)
+	}
+}
 export default withData(myApp)
