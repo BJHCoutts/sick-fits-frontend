@@ -15,11 +15,11 @@ Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
-interface IMyApp extends AppProps {
+interface IApp extends AppProps {
 	apollo: any
 }
 
-function myApp({ Component, pageProps, apollo }: IMyApp) {
+function App({ Component, pageProps, apollo }: IApp) {
 	return (
 		<>
 			<ApolloProvider client={apollo}>
@@ -40,10 +40,13 @@ const InnerStyles = styled.main`
 	padding: 2rem;
 `
 
-myApp.getInitialProps = async function ({ Component, ctx }) {
+App.getInitialProps = async function ({ Component, ctx }) {
 	let pageProps = {}
 	if (Component.getInitialProps) {
 		pageProps = await Component.getInitialProps(ctx)
 	}
+	pageProps.query = ctx.query
+	return { pageProps }
 }
-export default withData(myApp)
+
+export default withData(App)

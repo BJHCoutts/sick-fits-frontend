@@ -1,3 +1,14 @@
+import Head from 'next/head'
+import Products from '../../components/productsPage/Products'
+
 export default function ProductsIndexPage() {
-  return <h1>Products</h1>
+	return (
+		<>
+			<Head>
+				<title>Product Page</title>
+			</Head>
+			<h1>Products</h1>
+			<Products />
+		</>
+	)
 }
