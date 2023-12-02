@@ -1,12 +1,22 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import StyledComponentsRegistry from '../lib/registry'
+import { ServerStyleSheet } from 'styled-components'
 
 export default function Document() {
 	return (
-		<Html lang="en">
-			<Head />
+		<Html lang="en-CA">
+			<Head>
+				<title>Sick Fits</title>
+				<meta
+					name="description"
+					content="Sick Fits online shoe store"
+					key="desc"
+				/>
+			</Head>
 			<body>
-				<h1>here here here</h1>
-				<Main />
+				<StyledComponentsRegistry>
+					<Main />
+				</StyledComponentsRegistry>
 				<NextScript />
 			</body>
 		</Html>

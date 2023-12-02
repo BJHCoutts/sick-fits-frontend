@@ -6,10 +6,10 @@ import '../components/styles/nprogress.css'
 import Router from 'next/router'
 
 import { AppProps } from 'next/app'
-import { GlobalStyle } from '../components/styles/GlobalStyle'
 import styled from 'styled-components'
 import { ApolloProvider } from '@apollo/client'
 import withData from '../lib/withData'
+import { GlobalStyle } from '../components/styles/GlobalStyle'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
