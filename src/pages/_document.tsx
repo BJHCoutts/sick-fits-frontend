@@ -6,7 +6,6 @@ export default function Document() {
 	return (
 		<Html lang="en-CA">
 			<Head>
-				<title>Sick Fits</title>
 				<meta
 					name="description"
 					content="Sick Fits online shoe store"

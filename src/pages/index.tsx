@@ -1,3 +1,12 @@
+import Head from 'next/head'
+
 export default function HomeIndexPage() {
-  return <h1>Home</h1>
+	return (
+		<>
+			<Head>
+				<title>Sick Fits!</title>
+			</Head>
+			<h1>Home</h1>
+		</>
+	)
 }
