@@ -1,4 +1,4 @@
-import { TProduct } from '../../lib/types/product'
+import { TProduct } from '../../lib/types/TProduct'
 import SItem from '../styles/ItemStyles'
 
 interface IProduct {
@@ -8,7 +8,13 @@ interface IProduct {
 export default function Product({ product }: IProduct) {
 	return (
 		<>
-			<SItem>{product.name}</SItem>
+			<SItem>
+				<img
+					src={product.photo.image.publicUrlTransformed}
+					alt={product.photo.altText}
+				/>
+				{product.name}
+			</SItem>
 		</>
 	)
 }

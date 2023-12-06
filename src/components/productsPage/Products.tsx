@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client'
 import { ALL_PRODUCTS_QUERY } from '../../lib/graphQL/queries/allProductsQuery'
-import { TProduct } from '../../lib/types/product'
+import { TProduct } from '../../lib/types/TProduct'
 import styled from 'styled-components'
 import Product from './Product'
 
