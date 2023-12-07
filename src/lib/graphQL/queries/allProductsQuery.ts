@@ -6,6 +6,7 @@ query ALL_PRODUCTS_QUERY{
     id
     name
     description
+    price
     photo {
       id
       image {

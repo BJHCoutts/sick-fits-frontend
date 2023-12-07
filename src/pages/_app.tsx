@@ -8,7 +8,7 @@ import Router from 'next/router'
 import { AppProps } from 'next/app'
 import styled from 'styled-components'
 import { ApolloProvider } from '@apollo/client'
-import withData from '../lib/withData'
+import withData from '../lib/functions/withData'
 import { GlobalStyle } from '../components/styles/GlobalStyle'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
