@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
-const NavStyles = styled.ul`
+const SNavList = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
   justify-self: end;
   font-size: 2rem;
+  list-style: none;
+  align-self: stretch;
   a,
   button {
     padding: 1rem 3rem;
@@ -63,6 +65,6 @@ const NavStyles = styled.ul`
     justify-content: center;
     font-size: 1.5rem;
   }
-`;
+`
 
-export default NavStyles;
+export default SNavList

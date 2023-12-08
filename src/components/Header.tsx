@@ -5,14 +5,14 @@ import styled from 'styled-components'
 export default function Header() {
 	return (
 		<HeaderStyled>
-			<h2>Header</h2>
 			<div className="bar">
 				<Logo>
 					<Link href={'/'}>Sick Fits</Link>
 				</Logo>
+				<Nav />
 			</div>
 			<div className="sub-bar">
-				<Nav />
+				<p>Search</p>
 			</div>
 		</HeaderStyled>
 	)
@@ -25,6 +25,7 @@ const Logo = styled.h1`
 	z-index: 2;
 	background-color: red;
 	transform: skewX(-7deg);
+	white-space: nowrap;
 
 	a {
 		color: white;
@@ -40,7 +41,7 @@ const HeaderStyled = styled.header`
 		display: grid;
 		grid-template-columns: auto 1fr;
 		justify-content: space-between;
-		align-items: center;
+		align-items: stretch;
 	}
 
 	.sub-bar {
