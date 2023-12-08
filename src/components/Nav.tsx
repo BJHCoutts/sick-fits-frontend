@@ -1,16 +1,23 @@
 import Link from 'next/link'
-import SNavList from './styles/SNav'
+import SNav from './styles/SNav'
 
 export default function Nav() {
 	return (
-		<SNavList>
-			<Link href="/products">Products</Link>
-
-			<Link href="/sell">Sell</Link>
-
-			<Link href="/orders">Orders</Link>
-
-			<Link href="/account">Account</Link>
-		</SNavList>
+		<SNav>
+			<ul>
+				<li>
+					<Link href="/products">Products</Link>
+				</li>
+				<li>
+					<Link href="/sell">Sell</Link>
+				</li>
+				<li>
+					<Link href="/orders">Orders</Link>
+				</li>
+				<li>
+					<Link href="/account">Account</Link>
+				</li>
+			</ul>
+		</SNav>
 	)
 }

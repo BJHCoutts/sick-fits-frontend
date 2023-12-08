@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 
-const SNavList = styled.ul`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-self: end;
-  font-size: 2rem;
-  list-style: none;
-  align-self: stretch;
+const SNav = styled.nav`
+    display: flex;
+    justify-self: end;
+  ul {
+    display: flex;
+    font-size: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    display: flex;
+  }
   a,
   button {
     padding: 1rem 3rem;
@@ -67,4 +72,4 @@ const SNavList = styled.ul`
   }
 `
 
-export default SNavList
+export default SNav
