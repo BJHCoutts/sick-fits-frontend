@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { TProduct } from '../../lib/types/TProduct'
-import SItem from '../styles/ItemStyles'
-import STitle from '../styles/STitle'
-import SPriceTag from '../styles/SPriceTag'
+import SItem from '../../components/styles/ItemStyles'
+import STitle from '../../components/styles/STitle'
+import SPriceTag from '../../components/styles/SPriceTag'
 import formatMoney from '../../lib/functions/formatMoney'
 
 interface IProduct {

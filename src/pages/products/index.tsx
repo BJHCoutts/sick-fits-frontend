@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Products from '../../components/productsPage/Products'
+import Products from './Products'
 
 export default function ProductsIndexPage() {
 	return (
