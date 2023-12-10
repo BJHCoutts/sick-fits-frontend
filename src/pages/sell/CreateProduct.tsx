@@ -1,3 +1,4 @@
+import SForm from '../../components/styles/SForm'
 import useForm from '../../lib/functions/useForm'
 
 export default function CreateProduct() {
@@ -9,7 +10,7 @@ export default function CreateProduct() {
 
 	return (
 		<>
-			<form action="">
+			<SForm action="">
 				<label htmlFor="name">
 					Name
 					<input
@@ -49,7 +50,7 @@ export default function CreateProduct() {
 				<button type="button" onClick={resetForm}>
 					Reset Form
 				</button>
-			</form>
+			</SForm>
 		</>
 	)
 }
