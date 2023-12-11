@@ -6,18 +6,18 @@ export default function useForm ( initial = {} )
 	
 	function handleChange ( e: ChangeEvent<HTMLInputElement> )
 	{
-		let { value, name, type } = e.target 
+		let { value, name, type }:{ value:string|number, name:string, type: string} = e.target 
 		if ( type === 'number' )
 		{
 			value = parseInt(value)
 		}
 		if ( type === 'file' )
 		{
-			value[0] = e.target.files
+			[value] = e.target.files
 		}
 		setInputs( {
 			...inputs,
-			[e.target.name]: e.target.value
+			[name]: value
 		})
 	}
 
