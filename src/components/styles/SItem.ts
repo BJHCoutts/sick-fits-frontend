@@ -33,6 +33,12 @@ const SItem = styled.li`
       padding: 1rem;
     }
   }
+  .no-photo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;
 
 export default SItem;

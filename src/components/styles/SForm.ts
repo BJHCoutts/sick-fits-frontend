@@ -47,6 +47,11 @@ const SForm = styled.form`
     padding: 0.5rem 1.2rem;
     cursor: pointer;
   }
+  .button-container {
+    display: flex;
+    gap: 1rem;
+  }
+
   fieldset {
     border: 0;
     padding: 0;
