@@ -3,6 +3,7 @@ import SForm from '../../components/styles/SForm'
 import useForm from '../../lib/functions/useForm'
 import { CREATE_PRODUCT_MUTATION } from '../../lib/graphQL/mutations/createProductMutation'
 import DisplayError from '../../components/ErrorMessage'
+import { ALL_PRODUCTS_QUERY } from '../../lib/graphQL/queries/allProductsQuery'
 
 export default function CreateProduct() {
 	const { inputs, handleChange, clearForm, resetForm } = useForm({
@@ -16,6 +17,7 @@ export default function CreateProduct() {
 		CREATE_PRODUCT_MUTATION,
 		{
 			variables: inputs,
+			refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
 		}
 	)
 
@@ -78,9 +80,7 @@ export default function CreateProduct() {
 						<button type="button" onClick={clearForm}>
 							Clear Form
 						</button>
-						<button type="submit" onClick={() => console.log('Add Product')}>
-							+ Add Product
-						</button>
+						<button type="submit">+ Add Product</button>
 					</div>
 				</fieldset>
 			</SForm>
