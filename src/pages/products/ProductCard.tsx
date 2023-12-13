@@ -22,6 +22,17 @@ export default function ProductCard({ product }: { product: IProduct }) {
 					<Link href={`/product/${product.id}`}>{product.name}</Link>
 				</STitle>
 				<SPriceTag>{formatMoney(product.price)}</SPriceTag>
+				<p>{product.description}</p>
+				<div className="buttonlist">
+					<Link
+						href={{
+							pathname: '/update',
+							query: { id: product.id },
+						}}
+					>
+						Edit
+					</Link>
+				</div>
 			</SItem>
 		</Link>
 	)
