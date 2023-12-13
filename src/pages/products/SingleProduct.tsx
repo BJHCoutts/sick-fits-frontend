@@ -2,6 +2,8 @@ import { useQuery } from '@apollo/client'
 import { PRODUCT_QUERY } from '../../lib/graphQL/queries/productQuery'
 import DisplayError from '../../components/ErrorMessage'
 import { TProduct } from '../../lib/types/TProduct'
+import Head from 'next/head'
+import styled from 'styled-components'
 
 export default function SingleProduct({
 	id,
@@ -19,7 +21,10 @@ export default function SingleProduct({
 
 	return (
 		<>
-			<div>
+			<Head>
+				<title>Sick Fits | {Product.name}</title>
+			</Head>
+			<SProduct>
 				<img
 					src={Product?.photo?.image.publicUrlTransformed}
 					alt={Product?.photo?.altText}
@@ -30,7 +35,20 @@ export default function SingleProduct({
 					<h2>{Product.name}</h2>
 					<p>{Product.description}</p>
 				</div>
-			</div>
+			</SProduct>
 		</>
 	)
 }
+
+const SProduct = styled.section`
+	display: grid;
+	grid-auto-columns: 1fr;
+	grid-auto-flow: column;
+	min-height: 800px;
+	max-width: var(--max-width);
+	align-items: top;
+	gap: 2rem;
+	img {
+		object-fit: contain;
+	}
+`

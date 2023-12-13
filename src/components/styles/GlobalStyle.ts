@@ -43,4 +43,8 @@ export const GlobalStyle = createGlobalStyle`
   button {
     font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
   }
+
+  img {
+    max-width: 100%;
+  }
 `
