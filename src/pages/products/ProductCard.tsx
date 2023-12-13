@@ -5,13 +5,11 @@ import STitle from '../../components/styles/STitle'
 import SPriceTag from '../../components/styles/SPriceTag'
 import formatMoney from '../../lib/functions/formatMoney'
 
-interface IProduct {
-	product: TProduct
-}
+interface IProduct extends TProduct {}
 
-export default function Product({ product }: IProduct) {
+export default function ProductCard({ product }: { product: IProduct }) {
 	return (
-		<>
+		<Link href={`/products/${product.id}`}>
 			<SItem>
 				<img
 					src={product?.photo?.image.publicUrlTransformed}
@@ -25,6 +23,6 @@ export default function Product({ product }: IProduct) {
 				</STitle>
 				<SPriceTag>{formatMoney(product.price)}</SPriceTag>
 			</SItem>
-		</>
+		</Link>
 	)
 }

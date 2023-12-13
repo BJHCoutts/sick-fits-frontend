@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client'
 import { ALL_PRODUCTS_QUERY } from '../../lib/graphQL/queries/allProductsQuery'
 import { TProduct } from '../../lib/types/TProduct'
 import styled from 'styled-components'
-import Product from './Product'
+import ProductCard from './ProductCard'
 
 export default function Products() {
 	const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY)
@@ -15,7 +15,7 @@ export default function Products() {
 		<>
 			<SProductList>
 				{data.allProducts.map((product: TProduct) => (
-					<Product product={product} key={product.id} />
+					<ProductCard product={product} key={product.id} />
 				))}
 			</SProductList>
 		</>

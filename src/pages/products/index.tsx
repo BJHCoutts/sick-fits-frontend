@@ -5,7 +5,7 @@ export default function ProductsIndexPage() {
 	return (
 		<>
 			<Head>
-				<title>Product Page</title>
+				<title>Products Page</title>
 			</Head>
 			<h1>Products</h1>
 			<Products />
