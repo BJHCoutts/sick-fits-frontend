@@ -30,7 +30,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
 							query: { id: product.id },
 						}}
 					>
-						Edit
+						Edit 📝
 					</Link>
 				</div>
 			</SItem>
