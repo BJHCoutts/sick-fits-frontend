@@ -4,6 +4,7 @@ import SItem from '../../components/styles/SItem'
 import STitle from '../../components/styles/STitle'
 import SPriceTag from '../../components/styles/SPriceTag'
 import formatMoney from '../../lib/functions/formatMoney'
+import DeleteProduct from './DeleteProduct'
 
 interface IProduct extends TProduct {}
 
@@ -32,6 +33,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
 					>
 						Edit 📝
 					</Link>
+					<DeleteProduct id={product.id}>Delete</DeleteProduct>
 				</div>
 			</SItem>
 		</Link>
