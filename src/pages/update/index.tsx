@@ -1,9 +1,9 @@
-import UpdateProduct from './UpdateProduct'
+import UpdateProductForm from './UpdateProductForm'
 
 export default function UpdatePage() {
 	return (
 		<>
-			<UpdateProduct />
+			<UpdateProductForm />
 		</>
 	)
 }

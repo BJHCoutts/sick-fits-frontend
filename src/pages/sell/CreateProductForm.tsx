@@ -5,8 +5,8 @@ import { CREATE_PRODUCT_MUTATION } from '../../lib/graphQL/mutations/createProdu
 import DisplayError from '../../components/ErrorMessage'
 import { ALL_PRODUCTS_QUERY } from '../../lib/graphQL/queries/allProductsQuery'
 
-export default function CreateProduct() {
-	const { inputs, handleChange, clearForm, resetForm } = useForm({
+export default function CreateProductForm() {
+	const { inputs, handleChange, clearForm } = useForm({
 		image: '',
 		name: '',
 		price: '',
