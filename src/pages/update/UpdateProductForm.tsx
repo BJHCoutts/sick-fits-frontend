@@ -21,11 +21,6 @@ export default function UpdateProductForm() {
 		variables: { id },
 	})
 
-	if (productLoading) return <p>Product Loading...</p>
-	if (productError) return <DisplayError error={productError} />
-
-	const { Product }: { Product: TProduct } = productData
-
 	const { inputs, handleChange, clearForm } = useForm({
 		image: '',
 		name: '',
@@ -44,6 +39,11 @@ export default function UpdateProductForm() {
 			refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
 		},
 	})
+
+	if (productLoading) return <p>Product Loading...</p>
+	if (productError) return <DisplayError error={productError} />
+
+	const { Product }: { Product: TProduct } = productData
 
 	return (
 		<>
