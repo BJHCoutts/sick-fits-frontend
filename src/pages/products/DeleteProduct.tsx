@@ -16,7 +16,7 @@ export default function DeleteProduct({ id, children }: IDeleteProduct) {
 		DELETE_PRODUCT_MUTATION,
 		{
 			variables: { id },
-			// refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
+			refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
 			update,
 		}
 	)

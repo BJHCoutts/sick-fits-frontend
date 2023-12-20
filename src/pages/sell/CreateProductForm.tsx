@@ -4,6 +4,7 @@ import useForm from '../../lib/functions/useForm'
 import { CREATE_PRODUCT_MUTATION } from '../../lib/graphQL/mutations/createProductMutation'
 import DisplayError from '../../components/ErrorMessage'
 import { ALL_PRODUCTS_QUERY } from '../../lib/graphQL/queries/allProductsQuery'
+import { useRouter } from 'next/router'
 
 export default function CreateProductForm() {
 	const { inputs, handleChange, clearForm } = useForm({
@@ -21,6 +22,8 @@ export default function CreateProductForm() {
 		}
 	)
 
+	const router = useRouter()
+
 	return (
 		<>
 			<SForm
@@ -28,6 +31,9 @@ export default function CreateProductForm() {
 					e.preventDefault()
 					const res = await createProduct()
 					clearForm()
+					router.push({
+						pathname: `/product/${res.data.createProduct.id}`,
+					})
 				}}
 			>
 				<DisplayError error={error} />
