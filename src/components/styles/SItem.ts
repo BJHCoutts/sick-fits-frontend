@@ -19,7 +19,7 @@ const SItem = styled.li`
     padding: 0 3rem;
     font-size: 1.5rem;
   }
-  .buttonList {
+  .button-list {
     display: grid;
     width: 100%;
     border-top: 1px solid var(--lightGray);
@@ -31,6 +31,10 @@ const SItem = styled.li`
       border: 0;
       font-size: 1rem;
       padding: 1rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-weight: 600;
     }
   }
   .no-photo {

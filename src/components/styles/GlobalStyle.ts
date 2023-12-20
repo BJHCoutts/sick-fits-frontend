@@ -35,10 +35,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: var(---black);
+    /* color: var(---black); */
   }
   a:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
   button {
     font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',

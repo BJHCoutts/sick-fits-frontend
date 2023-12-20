@@ -10,8 +10,8 @@ interface IProduct extends TProduct {}
 
 export default function ProductCard({ product }: { product: IProduct }) {
 	return (
-		<Link href={`/products/${product.id}`}>
-			<SItem>
+		<SItem>
+			<Link href={`/products/${product.id}`}>
 				<img
 					src={product?.photo?.image.publicUrlTransformed}
 					alt={product?.photo?.altText}
@@ -24,18 +24,18 @@ export default function ProductCard({ product }: { product: IProduct }) {
 				</STitle>
 				<SPriceTag>{formatMoney(product.price)}</SPriceTag>
 				<p>{product.description}</p>
-				<div className="buttonlist">
-					<Link
-						href={{
-							pathname: '/update',
-							query: { id: product.id },
-						}}
-					>
-						Edit 📝
-					</Link>
-					<DeleteProduct id={product.id}>Delete</DeleteProduct>
-				</div>
-			</SItem>
-		</Link>
+			</Link>
+			<div className="button-list">
+				<Link
+					href={{
+						pathname: '/update',
+						query: { id: product.id },
+					}}
+				>
+					Edit 📝
+				</Link>
+				<DeleteProduct id={product.id}>Delete</DeleteProduct>
+			</div>
+		</SItem>
 	)
 }
