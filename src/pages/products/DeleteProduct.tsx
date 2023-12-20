@@ -7,12 +7,17 @@ interface IDeleteProduct {
 	children: React.ReactNode
 }
 
+function update(cache: any, payload: any) {
+	cache.evict(cache.identify(payload.data.deleteProduct))
+}
+
 export default function DeleteProduct({ id, children }: IDeleteProduct) {
 	const [deleteProduct, { loading, error }] = useMutation(
 		DELETE_PRODUCT_MUTATION,
 		{
 			variables: { id },
-			refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
+			// refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
+			update,
 		}
 	)
 
