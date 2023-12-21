@@ -31,9 +31,10 @@ export default function CreateProductForm() {
 					e.preventDefault()
 					const res = await createProduct()
 					clearForm()
-					router.push({
-						pathname: `/product/${res.data.createProduct.id}`,
-					})
+					console.log(res.data.createProduct.id)
+					// router.push({
+					// 	pathname: `/products/${res.data.createProduct.id}`,
+					// })
 				}}
 			>
 				<DisplayError error={error} />
@@ -45,6 +46,7 @@ export default function CreateProductForm() {
 							id="image"
 							name="image"
 							onChange={handleChange}
+							required
 						/>
 					</label>
 					<label htmlFor="name">

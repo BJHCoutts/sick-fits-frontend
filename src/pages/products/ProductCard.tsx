@@ -13,14 +13,16 @@ export default function ProductCard({ product }: { product: IProduct }) {
 		<SItem>
 			<Link href={`/products/${product.id}`}>
 				<img
-					src={product?.photo?.image.publicUrlTransformed}
+					src={product?.photo?.image?.publicUrlTransformed}
 					alt={product?.photo?.altText}
 				/>
 
 				{!product.photo && <h3 className="no-photo">No Photo</h3>}
 
 				<STitle>
-					<Link href={`/product/${product.id}`}>{product.name}</Link>
+					<Link href={`/products/${product.id}`}>
+						{product.name} - {product.id}
+					</Link>
 				</STitle>
 				<SPriceTag>{formatMoney(product.price)}</SPriceTag>
 				<p>{product.description}</p>
