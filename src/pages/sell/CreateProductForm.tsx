@@ -31,10 +31,9 @@ export default function CreateProductForm() {
 					e.preventDefault()
 					const res = await createProduct()
 					clearForm()
-					console.log(res.data.createProduct.id)
-					// router.push({
-					// 	pathname: `/products/${res.data.createProduct.id}`,
-					// })
+					router.push({
+						pathname: `/products/${res.data.createProduct.id}`,
+					})
 				}}
 			>
 				<DisplayError error={error} />

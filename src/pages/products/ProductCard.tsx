@@ -36,7 +36,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
 				>
 					Edit 📝
 				</Link>
-				<DeleteProduct id={product.id}>Delete</DeleteProduct>
+				<DeleteProduct id={product.id}>Delete ☠️</DeleteProduct>
 			</div>
 		</SItem>
 	)
