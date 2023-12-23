@@ -4,10 +4,10 @@ import Pagination from './Pagination'
 export default function ProductsIndexPage() {
 	return (
 		<>
-			<Pagination />
+			<Pagination page={1} />
 			<h1>Products</h1>
 			<Products />
-			<Pagination />
+			<Pagination page={1} />
 		</>
 	)
 }
