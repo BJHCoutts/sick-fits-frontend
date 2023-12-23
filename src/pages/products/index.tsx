@@ -1,14 +1,13 @@
-import Head from 'next/head'
 import Products from './Products'
+import Pagination from './Pagination'
 
 export default function ProductsIndexPage() {
 	return (
 		<>
-			<Head>
-				<title>Products Page</title>
-			</Head>
+			<Pagination />
 			<h1>Products</h1>
 			<Products />
+			<Pagination />
 		</>
 	)
 }
