@@ -20,7 +20,6 @@ export default function Pagination({ page }) {
 		<SPagination>
 			<Head>
 				<title>
-					{' '}
 					Sick Fits - Page {page} of {}
 				</title>
 			</Head>
@@ -31,7 +30,7 @@ export default function Pagination({ page }) {
 				Page {page} of {pageCount}
 			</p>
 			<p>{count} Items Total</p>
-			<Link href={`/Products/${page + 1}]`} aria-disabled={page === pageCount}>
+			<Link href={`/products/${page + 1}`} aria-disabled={page === pageCount}>
 				Next ▶️
 			</Link>
 		</SPagination>

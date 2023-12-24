@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import SingleProduct from './SingleProduct'
+import SingleProduct from '../products/SingleProduct'
 
 export default function ProductPage() {
 	const {

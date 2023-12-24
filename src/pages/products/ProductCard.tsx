@@ -11,7 +11,7 @@ interface IProduct extends TProduct {}
 export default function ProductCard({ product }: { product: IProduct }) {
 	return (
 		<SItem>
-			<Link href={`/products/${product.id}`}>
+			<Link href={`/product/${product.id}`}>
 				<img
 					src={product?.photo?.image?.publicUrlTransformed}
 					alt={product?.photo?.altText}
@@ -20,9 +20,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
 				{!product.photo && <h3 className="no-photo">No Photo</h3>}
 
 				<STitle>
-					<Link href={`/products/${product.id}`}>
-						{product.name} - {product.id}
-					</Link>
+					<Link href={`/product/${product.id}`}>{product.name}</Link>
 				</STitle>
 				<SPriceTag>{formatMoney(product.price)}</SPriceTag>
 				<p>{product.description}</p>
