@@ -3,9 +3,19 @@ import { ALL_PRODUCTS_QUERY } from '../../lib/graphQL/queries/allProductsQuery'
 import { TProduct } from '../../lib/types/TProduct'
 import styled from 'styled-components'
 import ProductCard from './ProductCard'
+import { perPage } from '../../config'
 
-export default function Products() {
-	const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY)
+interface IProducts {
+	page: number
+}
+
+export default function Products({ page }: IProducts) {
+	const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY, {
+		variables: {
+			skip: page * perPage - perPage,
+			first: perPage,
+		},
+	})
 
 	if (loading) return <p>Loading...</p>
 	if (error) return <p>Error: {error.message}</p>

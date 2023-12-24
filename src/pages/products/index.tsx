@@ -19,7 +19,7 @@ export default function ProductsIndexPage() {
 			</Head>
 			<Pagination page={page || 1} />
 			<h1>Products</h1>
-			<Products />
+			<Products page={page || 1} />
 			<Pagination page={page || 1} />
 		</>
 	)
