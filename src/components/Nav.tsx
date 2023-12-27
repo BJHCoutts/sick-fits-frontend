@@ -4,7 +4,7 @@ import { useUser } from '../lib/functions/useUser'
 
 export default function Nav() {
 	const user = useUser()
-	console.log(user)
+
 	return (
 		<SNav>
 			<ul>
