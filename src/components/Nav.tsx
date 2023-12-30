@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import SNav from './styles/SNav'
 import { useUser } from '../lib/functions/useUser'
+import SignOut from './SignOut'
 
 export default function Nav() {
 	const user = useUser()
@@ -11,7 +12,7 @@ export default function Nav() {
 				<li>
 					<Link href="/products">Products</Link>
 				</li>
-				{user ? (
+				{user && (
 					<>
 						<li>
 							<Link href="/sell">Sell</Link>
@@ -22,11 +23,15 @@ export default function Nav() {
 						<li>
 							<Link href="/account">Account</Link>
 						</li>
+						<li>
+							<SignOut />
+						</li>
 					</>
-				) : (
+				)}
+				{!user && (
 					<>
 						<li>
-							<Link href="/sign-in">Sign In</Link>
+							<Link href="/signin">Sign In</Link>
 						</li>
 					</>
 				)}

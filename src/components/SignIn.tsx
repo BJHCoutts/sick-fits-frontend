@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client'
 import useForm from '../lib/functions/useForm'
 import SForm from './styles/SForm'
-import { SIGNIN_MUTATION } from '../lib/graphQL/mutations/signInMutation'
+import { SIGN_IN_MUTATION } from '../lib/graphQL/mutations/signInMutation'
 import { CURRENT_USER_QUERY } from '../lib/graphQL/queries/currentUserQuery'
 
 export default function SignIn() {
@@ -10,15 +10,14 @@ export default function SignIn() {
 		password: '',
 	})
 
-	const [signin, { error, loading }] = useMutation(SIGNIN_MUTATION, {
+	const [signIn, { error, loading }] = useMutation(SIGN_IN_MUTATION, {
 		variables: inputs,
 		refetchQueries: [{ query: CURRENT_USER_QUERY }],
 	})
 
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
-		console.log(inputs)
-		const res = await signin()
+		const res = await signIn()
 		console.log(res)
 		resetForm()
 	}
