@@ -1,23 +1,24 @@
 import { useMutation } from '@apollo/client'
 import useForm from '../lib/functions/useForm'
 import SForm from './styles/SForm'
-import { SIGN_IN_MUTATION } from '../lib/graphQL/mutations/signInMutation'
 import { CURRENT_USER_QUERY } from '../lib/graphQL/queries/currentUserQuery'
+import { SIGN_UP_MUTATION } from '../lib/graphQL/mutations/signUpMutation'
 
 export default function SignUp() {
 	const { inputs, handleChange, resetForm } = useForm({
 		email: '',
+		name: '',
 		password: '',
 	})
 
-	const [signIn, { error, loading }] = useMutation(SIGN_IN_MUTATION, {
+	const [signUp, { error, loading }] = useMutation(SIGN_UP_MUTATION, {
 		variables: inputs,
-		refetchQueries: [{ query: CURRENT_USER_QUERY }],
+		// refetchQueries: [{ query: CURRENT_USER_QUERY }],
 	})
 
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
-		const res = await signIn()
+		const res = await signUp()
 		resetForm()
 	}
 
