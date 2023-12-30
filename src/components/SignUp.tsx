@@ -11,7 +11,7 @@ export default function SignUp() {
 		password: '',
 	})
 
-	const [signUp, { error, loading }] = useMutation(SIGN_UP_MUTATION, {
+	const [signUp, { data, loading, error }] = useMutation(SIGN_UP_MUTATION, {
 		variables: inputs,
 		// refetchQueries: [{ query: CURRENT_USER_QUERY }],
 	})
@@ -19,6 +19,8 @@ export default function SignUp() {
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
 		const res = await signUp()
+		console.log('res' + res)
+		console.log({ data, loading, error })
 		resetForm()
 	}
 
