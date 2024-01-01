@@ -1,37 +1,51 @@
 import { useMutation } from '@apollo/client'
 import useForm from '../lib/functions/useForm'
 import SForm from './styles/SForm'
-import { CURRENT_USER_QUERY } from '../lib/graphQL/queries/currentUserQuery'
-import { SIGN_UP_MUTATION } from '../lib/graphQL/mutations/signUpMutation'
 import DisplayError from './ErrorMessage'
+import { RESET_PASSWORD_MUTATION } from '../lib/graphQL/mutations/resetPasswordMutation'
+import { useRouter } from 'next/router'
 
-export default function SignUp() {
+export default function ResetPassword() {
+	const {
+		query: { token },
+	} = useRouter()
+
+	if (!token) return <p>Sorry, but you must supply token</p>
+
 	const { inputs, handleChange, resetForm } = useForm({
 		email: '',
-		name: '',
 		password: '',
+		token,
 	})
 
-	const [signUp, { data, loading, error }] = useMutation(SIGN_UP_MUTATION, {
-		variables: inputs,
-		// refetchQueries: [{ query: CURRENT_USER_QUERY }],
-	})
+	const [resetPassword, { data, loading }] = useMutation(
+		RESET_PASSWORD_MUTATION,
+		{
+			variables: inputs,
+		}
+	)
 
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
-		const res = await signUp().catch(console.error)
+		const res = await resetPassword().catch(console.error)
 		console.log('res' + res)
-		console.log({ data, loading, error })
+		console.log({ data, loading })
 		resetForm()
 	}
+
+	const error = data?.redeemUserPasswordResetToken?.code
+		? data?.redeemUserPasswordResetToken
+		: null
 
 	return (
 		<>
 			<SForm method="POST" onSubmit={handleSubmit}>
-				<h2>Sign Up for Your Account</h2>
+				<h2>Reset Password</h2>
 				<DisplayError error={error} />
 				<fieldset>
-					{data?.createUser && <p>Signed Up with {data.createUser}</p>}
+					{data?.redeemUserPasswordResetToken === null && (
+						<p>Success! Check your email!</p>
+					)}
 					<label htmlFor="email">
 						Email
 						<input
@@ -41,18 +55,6 @@ export default function SignUp() {
 							placeholder="Your Email Address"
 							autoComplete="email"
 							value={inputs.email}
-							onChange={handleChange}
-						/>
-					</label>
-					<label htmlFor="name">
-						Name
-						<input
-							type="name"
-							name="name"
-							id="name"
-							placeholder="Your Name"
-							autoComplete="name"
-							value={inputs.name}
 							onChange={handleChange}
 						/>
 					</label>
@@ -68,7 +70,7 @@ export default function SignUp() {
 							onChange={handleChange}
 						/>
 					</label>
-					<button type="submit">Sign Up</button>
+					<button type="submit">Sign In</button>
 				</fieldset>
 			</SForm>
 		</>
