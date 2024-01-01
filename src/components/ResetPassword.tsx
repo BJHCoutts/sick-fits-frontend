@@ -4,13 +4,20 @@ import SForm from './styles/SForm'
 import DisplayError from './ErrorMessage'
 import { RESET_PASSWORD_MUTATION } from '../lib/graphQL/mutations/resetPasswordMutation'
 import { useRouter } from 'next/router'
+import RequestResetPassword from './RequestResetPassword'
 
 export default function ResetPassword() {
 	const {
 		query: { token },
 	} = useRouter()
 
-	if (!token) return <p>Sorry, but you must supply token</p>
+	if (!token)
+		return (
+			<>
+				<p>Sorry, but you must supply token</p>
+				<RequestResetPassword />
+			</>
+		)
 
 	const { inputs, handleChange, resetForm } = useForm({
 		email: '',
@@ -28,8 +35,6 @@ export default function ResetPassword() {
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
 		const res = await resetPassword().catch(console.error)
-		console.log('res' + res)
-		console.log({ data, loading })
 		resetForm()
 	}
 
@@ -43,9 +48,9 @@ export default function ResetPassword() {
 				<h2>Reset Password</h2>
 				<DisplayError error={error} />
 				<fieldset>
-					{data?.redeemUserPasswordResetToken === null && (
-						<p>Success! Check your email!</p>
-					)}
+					{data?.redeemUserPasswordResetToken === null ? (
+						<p>Success! Password has been changed</p>
+					) : null}
 					<label htmlFor="email">
 						Email
 						<input

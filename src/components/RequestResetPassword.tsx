@@ -3,6 +3,7 @@ import useForm from '../lib/functions/useForm'
 import SForm from './styles/SForm'
 import DisplayError from './ErrorMessage'
 import { REQUEST_RESET_PASSWORD_MUTATION } from '../lib/graphQL/mutations/requestResetPasswordMutation'
+import Link from 'next/link'
 
 export default function RequestResetPassword() {
 	const { inputs, handleChange, resetForm } = useForm({
@@ -29,7 +30,10 @@ export default function RequestResetPassword() {
 				<DisplayError error={error} />
 				<fieldset>
 					{data?.sendUserPasswordResetLink === null && (
-						<p>Success! Check your email!</p>
+						<p>
+							Success! Password has been changed. Enter the ?token=token query
+							string into the URL <Link href={`/reset`}>here</Link>
+						</p>
 					)}
 					<label htmlFor="email">
 						Email
