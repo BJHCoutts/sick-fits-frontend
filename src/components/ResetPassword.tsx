@@ -25,7 +25,7 @@ export default function ResetPassword() {
 		token,
 	})
 
-	const [resetPassword, { data, loading }] = useMutation(
+	const [resetPassword, { data, loading, error }] = useMutation(
 		RESET_PASSWORD_MUTATION,
 		{
 			variables: inputs,
@@ -38,7 +38,7 @@ export default function ResetPassword() {
 		resetForm()
 	}
 
-	const error = data?.redeemUserPasswordResetToken?.code
+	const successError = data?.redeemUserPasswordResetToken?.code
 		? data?.redeemUserPasswordResetToken
 		: null
 
@@ -46,7 +46,7 @@ export default function ResetPassword() {
 		<>
 			<SForm method="POST" onSubmit={handleSubmit}>
 				<h2>Reset Password</h2>
-				<DisplayError error={error} />
+				<DisplayError error={error || successError} />
 				<fieldset>
 					{data?.redeemUserPasswordResetToken === null ? (
 						<p>Success! Password has been changed</p>
