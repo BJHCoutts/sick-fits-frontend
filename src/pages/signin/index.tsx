@@ -2,6 +2,7 @@ import Head from 'next/head'
 import SignIn from '../../components/SignIn'
 import SignUp from '../../components/SignUp'
 import styled from 'styled-components'
+import RequestResetPassword from '../../components/RequestResetPassword'
 
 export default function SignInPage() {
 	return (
@@ -13,6 +14,7 @@ export default function SignInPage() {
 			<SGrid>
 				<SignIn />
 				<SignUp />
+				<RequestResetPassword />
 			</SGrid>
 		</>
 	)

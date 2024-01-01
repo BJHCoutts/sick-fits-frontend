@@ -31,7 +31,7 @@ export default function Nav() {
 				{!user && (
 					<>
 						<li>
-							<Link href="/signin">Sign In</Link>
+							<Link href="/signin">Sign In / Up</Link>
 						</li>
 					</>
 				)}

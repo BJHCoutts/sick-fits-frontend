@@ -2,24 +2,15 @@ import { useMutation } from '@apollo/client'
 import useForm from '../lib/functions/useForm'
 import SForm from './styles/SForm'
 import DisplayError from './ErrorMessage'
-import { RESET_PASSWORD_MUTATION } from '../lib/graphQL/mutations/resetPasswordMutation'
-import { useRouter } from 'next/router'
+import { REQUEST_RESET_PASSWORD_MUTATION } from '../lib/graphQL/mutations/requestResetPasswordMutation'
 
-export default function ResetPassword() {
-	const {
-		query: { token },
-	} = useRouter()
-
-	if (!token) return <p>Sorry, but you must supply token</p>
-
+export default function RequestResetPassword() {
 	const { inputs, handleChange, resetForm } = useForm({
 		email: '',
-		password: '',
-		token,
 	})
 
-	const [resetPassword, { data, loading }] = useMutation(
-		RESET_PASSWORD_MUTATION,
+	const [resetPassword, { data, loading, error }] = useMutation(
+		REQUEST_RESET_PASSWORD_MUTATION,
 		{
 			variables: inputs,
 		}
@@ -28,22 +19,16 @@ export default function ResetPassword() {
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
 		const res = await resetPassword().catch(console.error)
-		console.log('res' + res)
-		console.log({ data, loading })
 		resetForm()
 	}
-
-	const error = data?.redeemUserPasswordResetToken?.code
-		? data?.redeemUserPasswordResetToken
-		: null
 
 	return (
 		<>
 			<SForm method="POST" onSubmit={handleSubmit}>
-				<h2>Reset Password</h2>
+				<h2>Request Password Reset</h2>
 				<DisplayError error={error} />
 				<fieldset>
-					{data?.redeemUserPasswordResetToken === null && (
+					{data?.sendUserPasswordResetLink === null && (
 						<p>Success! Check your email!</p>
 					)}
 					<label htmlFor="email">
@@ -51,26 +36,13 @@ export default function ResetPassword() {
 						<input
 							type="email"
 							name="email"
-							id="email"
 							placeholder="Your Email Address"
 							autoComplete="email"
 							value={inputs.email}
 							onChange={handleChange}
 						/>
 					</label>
-					<label htmlFor="password">
-						Password
-						<input
-							type="password"
-							name="password"
-							id="password"
-							placeholder="Your Password"
-							autoComplete="password"
-							value={inputs.password}
-							onChange={handleChange}
-						/>
-					</label>
-					<button type="submit">Sign In</button>
+					<button type="submit">Request Password Reset</button>
 				</fieldset>
 			</SForm>
 		</>

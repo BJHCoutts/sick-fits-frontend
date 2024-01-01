@@ -37,7 +37,6 @@ export default function SignUp() {
 						<input
 							type="email"
 							name="email"
-							id="email"
 							placeholder="Your Email Address"
 							autoComplete="email"
 							value={inputs.email}
