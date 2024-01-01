@@ -4,6 +4,7 @@ import SForm from './styles/SForm'
 import { CURRENT_USER_QUERY } from '../lib/graphQL/queries/currentUserQuery'
 import { SIGN_UP_MUTATION } from '../lib/graphQL/mutations/signUpMutation'
 import DisplayError from './ErrorMessage'
+import { SIGN_IN_MUTATION } from '../lib/graphQL/mutations/signInMutation'
 
 export default function SignUp() {
 	const { inputs, handleChange, resetForm } = useForm({
@@ -12,16 +13,23 @@ export default function SignUp() {
 		password: '',
 	})
 
-	const [signUp, { data, loading, error }] = useMutation(SIGN_UP_MUTATION, {
-		variables: inputs,
-		// refetchQueries: [{ query: CURRENT_USER_QUERY }],
-	})
+	const [signUp, { data: sUData, loading: sULoading, error: sUError }] =
+		useMutation(SIGN_UP_MUTATION, {
+			variables: inputs,
+		})
+
+	const [signIn, { error: sIError, loading: sILoading }] = useMutation(
+		SIGN_IN_MUTATION,
+		{
+			variables: inputs,
+			refetchQueries: [{ query: CURRENT_USER_QUERY }],
+		}
+	)
 
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
-		const res = await signUp().catch(console.error)
-		console.log('res' + res)
-		console.log({ data, loading, error })
+		await signUp().catch(console.error)
+		await signIn().catch(console.error)
 		resetForm()
 	}
 
@@ -29,9 +37,9 @@ export default function SignUp() {
 		<>
 			<SForm method="POST" onSubmit={handleSubmit}>
 				<h2>Sign Up for Your Account</h2>
-				<DisplayError error={error} />
+				<DisplayError error={sUError} />
 				<fieldset>
-					{data?.createUser && <p>Signed Up with {data.createUser}</p>}
+					{sUData?.createUser && <p>Signed Up with {sUData.createUser.name}</p>}
 					<label htmlFor="email">
 						Email
 						<input
