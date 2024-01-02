@@ -47,7 +47,7 @@ export default function ResetPassword() {
 			<SForm method="POST" onSubmit={handleSubmit}>
 				<h2>Reset Password</h2>
 				<DisplayError error={error || successError} />
-				<fieldset>
+				<fieldset disabled={loading} aria-busy={loading}>
 					{data?.redeemUserPasswordResetToken === null ? (
 						<p>Success! Password has been changed</p>
 					) : null}

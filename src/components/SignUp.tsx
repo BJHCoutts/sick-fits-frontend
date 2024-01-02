@@ -38,7 +38,11 @@ export default function SignUp() {
 			<SForm method="POST" onSubmit={handleSubmit}>
 				<h2>Sign Up for Your Account</h2>
 				<DisplayError error={sUError} />
-				<fieldset>
+				<DisplayError error={sIError} />
+				<fieldset
+					disabled={sULoading || sILoading}
+					aria-busy={sULoading || sILoading}
+				>
 					{sUData?.createUser && <p>Signed Up with {sUData.createUser.name}</p>}
 					<label htmlFor="email">
 						Email

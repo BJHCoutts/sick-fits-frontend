@@ -3,6 +3,7 @@ import useForm from '../lib/functions/useForm'
 import SForm from './styles/SForm'
 import { SIGN_IN_MUTATION } from '../lib/graphQL/mutations/signInMutation'
 import { CURRENT_USER_QUERY } from '../lib/graphQL/queries/currentUserQuery'
+import DisplayError from './ErrorMessage'
 
 export default function SignIn() {
 	const { inputs, handleChange, resetForm } = useForm({
@@ -17,8 +18,7 @@ export default function SignIn() {
 
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
-		const res = await signIn()
-		console.log(res)
+		await signIn().catch(console.error)
 		resetForm()
 	}
 
@@ -26,7 +26,8 @@ export default function SignIn() {
 		<>
 			<SForm method="POST" onSubmit={handleSubmit}>
 				<h2>Sign Into Your Account</h2>
-				<fieldset>
+				<DisplayError error={error} />
+				<fieldset disabled={loading} aria-busy={loading}>
 					<label htmlFor="email">
 						Email
 						<input

@@ -42,6 +42,9 @@ const SCart = styled.div`
     list-style: none;
     overflow: scroll;
   }
+  img {
+    width: 100px;
+  }
 `;
 
 export default SCart;

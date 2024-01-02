@@ -28,7 +28,7 @@ export default function RequestResetPassword() {
 			<SForm method="POST" onSubmit={handleSubmit}>
 				<h2>Request Password Reset</h2>
 				<DisplayError error={error} />
-				<fieldset>
+				<fieldset disabled={loading} aria-busy={loading}>
 					{data?.sendUserPasswordResetLink === null && (
 						<p>
 							Success! Password has been changed. Enter the ?token=token query
