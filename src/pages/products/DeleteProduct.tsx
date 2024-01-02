@@ -30,6 +30,7 @@ export default function DeleteProduct({ id, children }: IDeleteProduct) {
 				}
 			}}
 			disabled={loading}
+			aria-busy={loading}
 		>
 			{children}
 		</button>
