@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import { ApolloProvider } from '@apollo/client'
 import withData from '../lib/functions/withData'
 import { GlobalStyle } from '../components/styles/GlobalStyle'
+import { CartStateProvider } from '../lib/context/cartState'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
@@ -23,12 +24,14 @@ function App({ Component, pageProps, apollo }: IApp) {
 	return (
 		<>
 			<ApolloProvider client={apollo}>
-				<GlobalStyle />
-				<Header />
-				<InnerStyles>
-					<Component {...pageProps} />
-				</InnerStyles>
-				<Footer />
+				<CartStateProvider>
+					<GlobalStyle />
+					<Header />
+					<InnerStyles>
+						<Component {...pageProps} />
+					</InnerStyles>
+					<Footer />
+				</CartStateProvider>
 			</ApolloProvider>
 		</>
 	)

@@ -6,10 +6,13 @@ import { TProduct } from '../lib/types/TProduct'
 import formatMoney from '../lib/functions/formatMoney'
 import { TCartItem } from '../lib/types/TCartItem'
 import calcCartTOtalPrice from '../lib/functions/calcCartTotalPrice'
+import { useCart } from '../lib/context/cartState'
 
 export default function Cart() {
 	const user = useUser()
 	if (!user) return null
+	const data = useCart()
+	console.log({ data })
 	return (
 		<SCart open>
 			<header>
