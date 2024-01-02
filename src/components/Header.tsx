@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Nav from './Nav'
 import styled from 'styled-components'
+import Cart from './Cart'
 
 export default function Header() {
 	return (
@@ -14,6 +15,7 @@ export default function Header() {
 			<div className="sub-bar">
 				<p>Search</p>
 			</div>
+			<Cart />
 		</HeaderStyled>
 	)
 }
