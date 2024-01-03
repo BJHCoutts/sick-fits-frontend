@@ -5,6 +5,7 @@ import STitle from '../../components/styles/STitle'
 import SPriceTag from '../../components/styles/SPriceTag'
 import formatMoney from '../../lib/functions/formatMoney'
 import DeleteProduct from './DeleteProduct'
+import AddToCart from '../../components/AddToCart'
 
 interface IProduct extends TProduct {}
 
@@ -26,6 +27,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
 				<p>{product.description}</p>
 			</Link>
 			<div className="button-list">
+				<AddToCart productId={product.id} />
 				<Link
 					href={{
 						pathname: '/update',

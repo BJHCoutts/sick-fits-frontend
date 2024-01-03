@@ -3,7 +3,7 @@ import { DELETE_PRODUCT_MUTATION } from '../../lib/graphQL/mutations/deleteProdu
 import { ALL_PRODUCTS_QUERY } from '../../lib/graphQL/queries/allProductsQuery'
 
 interface IDeleteProduct {
-	id: number
+	id: string
 	children: React.ReactNode
 }
 
