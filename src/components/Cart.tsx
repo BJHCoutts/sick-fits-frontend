@@ -7,16 +7,20 @@ import formatMoney from '../lib/functions/formatMoney'
 import { TCartItem } from '../lib/types/TCartItem'
 import calcCartTOtalPrice from '../lib/functions/calcCartTotalPrice'
 import { useCart } from '../lib/context/cartState'
+import SCloseButton from './styles/SCloseButton'
 
 export default function Cart() {
 	const user = useUser()
 	if (!user) return null
-	const data = useCart()
-	console.log({ data })
+	const { cartOpen, closeCart } = useCart()
+
 	return (
-		<SCart open>
+		<SCart open={cartOpen}>
 			<header>
 				<Supreme>{user.name}'s Cart</Supreme>
+				<SCloseButton type="button" onClick={closeCart}>
+					&times;
+				</SCloseButton>
 			</header>
 			{user?.cart && (
 				<ul>
