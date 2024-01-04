@@ -22,7 +22,7 @@ export default function SingleProduct({
 	return (
 		<>
 			<Head>
-				<title>Sick Fits | {Product.name}</title>
+				<title>{`Sick Fits | ${Product.name}`}</title>
 			</Head>
 			<SProduct>
 				<img

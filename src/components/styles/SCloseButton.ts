@@ -8,7 +8,6 @@ const SCloseButton = styled.button`
   position: absolute;
   z-index: 2;
   right: 20px;
-  cursor: pointer;
 `;
 
 export default SCloseButton;

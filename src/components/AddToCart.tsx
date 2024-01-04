@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client'
-import { ADD_TO_CART_MUTATION } from '../lib/graphQL/mutations/addToCart'
+import { ADD_TO_CART_MUTATION } from '../lib/graphQL/mutations/addToCartMutation'
 import { CURRENT_USER_QUERY } from '../lib/graphQL/queries/currentUserQuery'
 import { useCart } from '../lib/context/cartState'
 

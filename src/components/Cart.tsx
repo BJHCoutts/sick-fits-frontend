@@ -8,6 +8,7 @@ import { TCartItem } from '../lib/types/TCartItem'
 import calcCartTOtalPrice from '../lib/functions/calcCartTotalPrice'
 import { useCart } from '../lib/context/cartState'
 import SCloseButton from './styles/SCloseButton'
+import RemoveFromCart from './RemoveFromCart'
 
 export default function Cart() {
 	const user = useUser()
@@ -37,9 +38,9 @@ export default function Cart() {
 }
 
 function CartItem({
-	cartItem: { product, quantity },
+	cartItem: { product, quantity, id },
 }: {
-	cartItem: { product: TProduct; quantity: number }
+	cartItem: { product: TProduct; quantity: number; id: string }
 }) {
 	return (
 		<SCartItem>
@@ -47,12 +48,13 @@ function CartItem({
 			<div>
 				<h3>{product.name}</h3>
 				<p>
-					{formatMoney(product.price * quantity)} -{' '}
+					{formatMoney(product.price * quantity)}
 					<em>
 						{quantity} &times; {formatMoney(product.price)}
 					</em>
 				</p>
 			</div>
+			<RemoveFromCart id={id} />
 		</SCartItem>
 	)
 }
