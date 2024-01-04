@@ -47,4 +47,5 @@ export const GlobalStyle = createGlobalStyle`
   img {
     max-width: 100%;
   }
+  /* main {width: 100%;} */
 `

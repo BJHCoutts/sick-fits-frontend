@@ -2,14 +2,15 @@ import styled from 'styled-components';
 
 const SPagination = styled.div`
   text-align: center;
-  display: inline-grid;
+  display: grid;
+  width: fit-content;
   grid-template-columns: repeat(4, auto);
   align-items: stretch;
   justify-content: center;
   align-content: center;
-  margin: 2rem 0;
   border: 1px solid var(--lightGray);
   border-radius: 10px;
+  margin: 2rem auto 3rem;
   & > * {
     margin: 0;
     padding: 15px 30px;

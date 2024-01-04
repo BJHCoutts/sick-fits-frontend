@@ -36,4 +36,5 @@ const SProductList = styled.ul`
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 60px;
 	list-style-type: none;
+	padding: 0;
 `
