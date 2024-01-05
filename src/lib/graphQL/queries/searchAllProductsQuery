@@ -1,0 +1,25 @@
+import { gql } from "@apollo/client"
+
+export const searchAllProductsQuery = gql`
+	query SEARCH_ALL_PRODUCTS_QUERY($searchTerm:String!) {
+		allProducts (where: { 
+			OR:[
+				{name_contains_i: $searchTerm}, 
+				{  description_contains_i: $searchTerm}
+			]
+		})
+		{
+			id
+			name
+			description
+			photo {
+				id
+				image {
+					id
+					publicUrlTransformed
+				}
+				altText
+			}
+		}
+	}
+`
