@@ -1,9 +1,9 @@
-export function debounce (functionToRun:Function, timer:number)
+export function debounce (callback:Function, timer:number)
 {
 	let debounceTimer: NodeJS.Timeout
 	
 	clearTimeout( debounceTimer )
 		
-	debounceTimer = setTimeout( () => functionToRun, timer)
+	debounceTimer = setTimeout(callback, timer)
 	
 }
