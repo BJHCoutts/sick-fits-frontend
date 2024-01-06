@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client"
 
-export const searchAllProductsQuery = gql`
+export const SEARCH_ALL_PRODUCTS_QUERY = gql`
 	query SEARCH_ALL_PRODUCTS_QUERY($searchTerm:String!) {
-		allProducts (where: { 
+		searchTerms: allProducts (where: { 
 			OR:[
 				{name_contains_i: $searchTerm}, 
 				{  description_contains_i: $searchTerm}
