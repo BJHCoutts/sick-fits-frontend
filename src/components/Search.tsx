@@ -12,11 +12,14 @@ export default function Search() {
 		}
 	)
 
-	const { getInputProps, getItemProps, inputValue } = useCombobox({
+	const { getInputProps, getItemProps } = useCombobox({
 		items: [],
-		onInputValueChange() {
-			console.log('input changed')
-			debounce(() => console.log('now'), 1000)
+		onInputValueChange({ inputValue }) {
+			console.log('input changed to ' + inputValue)
+			debounce(getData)
+			function getData() {
+				console.log(inputValue)
+			}
 		},
 		onSelectedItemChange() {
 			console.log('selected item changed')
