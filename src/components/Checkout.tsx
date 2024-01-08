@@ -1,21 +1,62 @@
-import { CardElement, Elements } from '@stripe/react-stripe-js'
+import {
+	CardElement,
+	Elements,
+	useElements,
+	useStripe,
+} from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import styled from 'styled-components'
 import SickButton from './styles/SickButton'
+import { useState } from 'react'
+import nProgress from 'nprogress'
 
 const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY)
 
-export default function Checkout() {
-	function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+function CheckoutForm() {
+	const [error, setError] = useState(null)
+	const [loading, setLoading] = useState(false)
+	const stripe = useStripe()
+	const elements = useElements()
+
+	async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
 		e.preventDefault()
+		if (!stripe || !elements) {
+			// Stripe.js hasn't yet loaded.
+			// Make sure to disable form submission until Stripe.js has loaded.
+			return
+		}
+		setLoading(true)
+		nProgress.start()
+
+		const { error, paymentMethod } = await stripe?.createPaymentMethod({
+			type: 'card',
+			card: elements?.getElement(CardElement),
+		})
+
+		console.log({ paymentMethod })
+
+		if (error) {
+			// Show error to your customer (for example, payment details incomplete)
+			console.log(error.message)
+		} else {
+			// Your customer will be redirected to your `return_url`. For some payment
+			// methods like iDEAL, your customer will be redirected to an intermediate
+			// site first to authorize the payment, then redirected to the `return_url`.
+		}
 	}
 
 	return (
+		<SCheckoutForm onSubmit={handleSubmit}>
+			<SickButton disabled={loading}>Checkout Now</SickButton>
+		</SCheckoutForm>
+	)
+}
+
+export default function Checkout() {
+	return (
 		<Elements stripe={stripeLib}>
-			<SCheckoutForm onSubmit={handleSubmit}>
-				<CardElement />
-				<SickButton>Checkout Now</SickButton>
-			</SCheckoutForm>
+			<CardElement />
+			<CheckoutForm />
 		</Elements>
 	)
 }
