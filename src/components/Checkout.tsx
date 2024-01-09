@@ -9,14 +9,19 @@ import styled from 'styled-components'
 import SickButton from './styles/SickButton'
 import { useState } from 'react'
 import nProgress from 'nprogress'
+import { useMutation } from '@apollo/client'
+import { CREATE_ORDER_MUTATION } from '../lib/graphQL/mutations/createOrderMutation'
 
 const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY)
 
 function CheckoutForm() {
-	const [error, setError] = useState(null)
+	const [error, setError] = useState()
 	const [loading, setLoading] = useState(false)
 	const stripe = useStripe()
 	const elements = useElements()
+	const [checkout, { error: checkoutError }] = useMutation(
+		CREATE_ORDER_MUTATION
+	)
 
 	async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
 		e.preventDefault()
@@ -33,20 +38,29 @@ function CheckoutForm() {
 			card: elements?.getElement(CardElement),
 		})
 
-		console.log({ paymentMethod })
-
 		if (error) {
 			// Show error to your customer (for example, payment details incomplete)
-			console.log(error.message)
-		} else {
-			// Your customer will be redirected to your `return_url`. For some payment
-			// methods like iDEAL, your customer will be redirected to an intermediate
-			// site first to authorize the payment, then redirected to the `return_url`.
+			setError(error)
+			nProgress.done()
+			return
 		}
+
+		const order = await checkout({
+			variables: {
+				token: paymentMethod.id,
+			},
+		})
+
+		nProgress.done()
+		setLoading(false)
 	}
 
 	return (
 		<SCheckoutForm onSubmit={handleSubmit}>
+			{error && <p style={{ fontSize: '1rem' }}>{error.message}</p>}
+			{checkoutError && (
+				<p style={{ fontSize: '1rem' }}>{checkoutError.message}</p>
+			)}
 			<SickButton disabled={loading}>Checkout Now</SickButton>
 		</SCheckoutForm>
 	)
