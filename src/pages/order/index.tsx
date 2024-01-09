@@ -1,12 +1,12 @@
 import Head from 'next/head'
 
-export default function OrderIndexPage() {
+export default function OrderIndexPage({ query }) {
 	return (
 		<>
 			<Head>
 				<title>Order Page</title>
 			</Head>
-			<h1>Orders</h1>
+			<h1>Order</h1>
 		</>
 	)
 }

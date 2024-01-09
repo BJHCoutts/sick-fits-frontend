@@ -58,16 +58,10 @@ function CheckoutForm() {
 			},
 		})
 
-		console.log({ order })
-
 		router.push({
 			pathname: '/order/[id]',
 			query: { id: order.data.checkout.id },
 		})
-		// router.push({
-		// 	pathname: '/order',
-		// 	query: { id: order.data.checkout.id },
-		// })
 
 		closeCart()
 
