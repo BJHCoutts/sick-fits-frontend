@@ -11,6 +11,9 @@ import { useState } from 'react'
 import nProgress from 'nprogress'
 import { useMutation } from '@apollo/client'
 import { CREATE_ORDER_MUTATION } from '../lib/graphQL/mutations/createOrderMutation'
+import { useRouter } from 'next/router'
+import { useCart } from '../lib/context/cartState'
+import { CURRENT_USER_QUERY } from '../lib/graphQL/queries/currentUserQuery'
 
 const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY)
 
@@ -20,9 +23,13 @@ function CheckoutForm() {
 	const stripe = useStripe()
 	const elements = useElements()
 	const [checkout, { error: checkoutError }] = useMutation(
-		CREATE_ORDER_MUTATION
+		CREATE_ORDER_MUTATION,
+		{
+			refetchQueries: [{ query: CURRENT_USER_QUERY }],
+		}
 	)
-
+	const router = useRouter()
+	const { closeCart } = useCart()
 	async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
 		e.preventDefault()
 		if (!stripe || !elements) {
@@ -50,6 +57,19 @@ function CheckoutForm() {
 				token: paymentMethod.id,
 			},
 		})
+
+		console.log({ order })
+
+		router.push({
+			pathname: '/order/[id]',
+			query: { id: order.data.checkout.id },
+		})
+		// router.push({
+		// 	pathname: '/order',
+		// 	query: { id: order.data.checkout.id },
+		// })
+
+		closeCart()
 
 		nProgress.done()
 		setLoading(false)

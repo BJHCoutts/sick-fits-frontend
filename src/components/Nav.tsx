@@ -4,6 +4,7 @@ import { useUser } from '../lib/functions/useUser'
 import SignOut from './SignOut'
 import { useCart } from '../lib/context/cartState'
 import CartCount from './CartCount'
+import { TCartItem } from '../lib/types/TCartItem'
 
 export default function Nav() {
 	const user = useUser()
@@ -34,7 +35,9 @@ export default function Nav() {
 								My Cart
 								<CartCount
 									count={user.cart.reduce(
-										(tally, cartItem) => tally + cartItem.quantity,
+										(tally: number, cartItem: TCartItem) => {
+											tally + (cartItem.product ? cartItem.quantity : 0)
+										},
 										0
 									)}
 								/>
