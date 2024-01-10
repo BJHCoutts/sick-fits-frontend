@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const OrderStyles = styled.div`
+const SOrder = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   border: 1px solid var(--offWhite);
@@ -35,4 +35,4 @@ const OrderStyles = styled.div`
     }
   }
 `;
-export default OrderStyles;
+export default SOrder;
