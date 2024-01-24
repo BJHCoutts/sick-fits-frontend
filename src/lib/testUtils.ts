@@ -1,24 +1,44 @@
-import casual from 'casual';
-import { PAGINATION_QUERY } from '../components/Pagination';
+// import casual from 'casual';
+import { PAGINATION_QUERY } from './graphQL/queries/paginationQuery'
+import { TProduct } from './types/TProduct'
+
 
 // seed it so we get consistent results
-casual.seed(777);
+// casual.seed( 777 );
 
-const fakeItem = () => ({
+export const fakeProduct = {
   // __typename: 'Item',
   id: 'abc123',
   price: 5000,
-  user: null,
+  // user: null,
   photo: {
     id: 'abc123',
     altText: 'dogs are best',
     image: {
+      id: 'abc321',
       publicUrlTransformed: 'dog.jpg',
     },
   },
   name: 'dogs are best',
   description: 'dogs',
-});
+}
+
+const fakeItem = ():TProduct => ({
+  // __typename: 'Item',
+  id: 'abc123',
+  price: 5000,
+  // user: null,
+  photo: {
+    id: 'abc123',
+    altText: 'dogs are best',
+    image: {
+      id: 'abc321',
+      publicUrlTransformed: 'dog.jpg',
+    },
+  },
+  name: 'dogs are best',
+  description: 'dogs',
+} );
 
 const fakeUser = (overrides) => ({
   __typename: 'User',

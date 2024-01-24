@@ -4,12 +4,12 @@ export type TProduct = {
 	description: string
 	price: number
 	photo: {
-		id: number
+		id: string
 		image: {
-			id: number
+			id?: string
 			publicUrlTransformed: string
 		}
 		altText: string
 	}
-	status: string
+	status?: string
 }
