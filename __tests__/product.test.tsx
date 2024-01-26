@@ -1,8 +1,9 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import React from 'react'
 import ProductCard from '../src/pages/products/ProductCard'
 import { fakeItem, fakeProduct } from '../src/lib/testUtils'
 import { MockedProvider } from '@apollo/client/testing'
+import '@testing-library/jest-dom'
 
 describe('<Product/>', () => {
 	it('renders out the price and title', () => {
@@ -11,6 +12,22 @@ describe('<Product/>', () => {
 				<ProductCard product={fakeProduct} />
 			</MockedProvider>
 		)
-		debug()
+		const priceTag = screen.getByText('$50')
+		expect(priceTag).toBeInTheDocument()
+		const link = container.querySelector('a')
+		if (link) {
+			debug(link)
+			expect(link).toHaveAttribute('href', '/product/abc123')
+			expect(link).toHaveTextContent('dogs are best')
+		}
 	})
+})
+
+it('Renders and matches HTML Snapshot', () => {
+	const { container, debug } = render(
+		<MockedProvider>
+			<ProductCard product={fakeProduct} />
+		</MockedProvider>
+	)
+	expect(container).toMatchSnapshot()
 })
