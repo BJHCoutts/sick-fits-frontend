@@ -31,3 +31,13 @@ it('Renders and matches HTML Snapshot', () => {
 	)
 	expect(container).toMatchSnapshot()
 })
+
+it('Renders the image properly', () => {
+	const { container, debug } = render(
+		<MockedProvider>
+			<ProductCard product={fakeProduct} />
+		</MockedProvider>
+	)
+	const img = screen.getByAltText(fakeProduct.name)
+	expect(img).toBeInTheDocument()
+})
