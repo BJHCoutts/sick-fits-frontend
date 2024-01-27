@@ -17,15 +17,15 @@ export default function ProductCard({ product }: { product: IProduct }) {
 					src={product?.photo?.image?.publicUrlTransformed}
 					alt={product?.photo?.altText}
 				/>
-
-				{!product.photo && <h3 className="no-photo">No Photo</h3>}
-
-				<STitle>
-					<Link href={`/product/${product.id}`}>{product.name}</Link>
-				</STitle>
-				<SPriceTag>{formatMoney(product.price)}</SPriceTag>
-				<p>{product.description}</p>
 			</Link>
+
+			{!product.photo && <h3 className="no-photo">No Photo</h3>}
+
+			<STitle>
+				<Link href={`/product/${product.id}`}>{product.name}</Link>
+			</STitle>
+			<SPriceTag>{formatMoney(product.price)}</SPriceTag>
+			<p>{product.description}</p>
 			<div className="button-list">
 				<AddToCart productId={product.id} />
 				<Link
