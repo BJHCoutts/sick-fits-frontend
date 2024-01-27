@@ -5,7 +5,7 @@ import { fakeItem, fakeProduct } from '../src/lib/testUtils'
 import { MockedProvider } from '@apollo/client/testing'
 import '@testing-library/jest-dom'
 
-describe('<Product/>', () => {
+describe('<ProductCard/>', () => {
 	it('renders out the price and title', () => {
 		const { container, debug } = render(
 			<MockedProvider>

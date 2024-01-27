@@ -24,7 +24,7 @@ export default function SingleProduct({
 			<Head>
 				<title>{`Sick Fits | ${Product.name}`}</title>
 			</Head>
-			<SProduct>
+			<SProduct data-testid="single-product">
 				<img
 					src={Product?.photo?.image.publicUrlTransformed}
 					alt={Product?.photo?.altText}
