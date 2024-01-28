@@ -4,6 +4,7 @@ import { fakeCartItem, fakeUser } from '../src/lib/testUtils'
 import { CartStateProvider } from '../src/lib/context/cartState'
 import { MockedProvider } from '@apollo/client/testing'
 import Nav from '../src/components/Nav'
+import wait from 'waait'
 
 const notSignedInMocks = [
 	{
@@ -70,9 +71,7 @@ describe('<Nav />', () => {
 				</MockedProvider>
 			</CartStateProvider>
 		)
-		await screen.findByText('Account')
-		debug()
-		expect(screen.getByText('3')).toBeInTheDocument()
-		// TODO - why is the result 13, test value being converted to string and concatenated?
+		await wait(400)
+		await screen.findByText('4')
 	})
 })

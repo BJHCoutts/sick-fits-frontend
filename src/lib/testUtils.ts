@@ -59,7 +59,7 @@ export const fakeUser = (overrides: {}): TUser => ({
 export const fakeCartItem = (overrides: {}): TCartItem => ({
 	__typename: 'CartItem',
 	id: 'omg123',
-	quantity: 3,
+	quantity: 4,
 	product: fakeItem(),
 	user: fakeUser({}),
 	...overrides,
