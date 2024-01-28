@@ -2,43 +2,43 @@
 import { PAGINATION_QUERY } from './graphQL/queries/paginationQuery'
 import { TProduct } from './types/TProduct'
 
-
 // seed it so we get consistent results
 // casual.seed( 777 );
 
 export const fakeProduct = {
-  // __typename: 'Item',
-  id: 'abc123',
-  price: 5000,
-  // user: null,
-  photo: {
-    id: 'abc123',
-    altText: 'dogs are best',
-    image: {
-      id: 'abc321',
-      publicUrlTransformed: 'dog.jpg',
-    },
-  },
-  name: 'dogs are best',
-  description: 'dogs',
+	// __typename: 'Item',
+	id: 'abc123',
+	price: 5000,
+	// user: null,
+	photo: {
+		id: 'abc123',
+		altText: 'dogs are best',
+		image: {
+			id: 'abc321',
+			publicUrlTransformed: 'dog.jpg',
+		},
+	},
+	name: 'dogs are best',
+	description: 'dogs',
+	status: 'AVAILABLE',
 }
 
-const fakeItem = ():TProduct => ({
-  // __typename: 'Item',
-  id: 'abc123',
-  price: 5000,
-  // user: null,
-  photo: {
-    id: 'abc123',
-    altText: 'dogs are best',
-    image: {
-      id: 'abc321',
-      publicUrlTransformed: 'dog.jpg',
-    },
-  },
-  name: 'dogs are best',
-  description: 'dogs',
-} );
+const fakeItem = (): TProduct => ({
+	// __typename: 'Item',
+	id: 'abc123',
+	price: 5000,
+	// user: null,
+	photo: {
+		id: 'abc123',
+		altText: 'dogs are best',
+		image: {
+			id: 'abc321',
+			publicUrlTransformed: 'dog.jpg',
+		},
+	},
+	name: 'dogs are best',
+	description: 'dogs',
+})
 
 // const fakeUser = ( overrides: { overrides:unknown } ) => ({
 //   __typename: 'User',
@@ -128,11 +128,11 @@ const fakeItem = ():TProduct => ({
 // }
 
 export {
-  // makePaginationMocksFor,
-  // LocalStorageMock,
-  fakeItem,
-  // fakeUser,
-  // fakeCartItem,
-  // fakeOrder,
-  // fakeOrderItem,
-};
+	// makePaginationMocksFor,
+	// LocalStorageMock,
+	fakeItem,
+	// fakeUser,
+	// fakeCartItem,
+	// fakeOrder,
+	// fakeOrderItem,
+}

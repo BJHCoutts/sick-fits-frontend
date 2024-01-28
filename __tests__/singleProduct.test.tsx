@@ -26,7 +26,6 @@ describe('<SingleProduct />', () => {
 				<SingleProduct id="123" />
 			</MockedProvider>
 		)
-		debug()
 		await screen.findByTestId('single-product')
 		expect(container).toMatchSnapshot()
 	})
@@ -54,6 +53,5 @@ it('Errors out when product is not found', async () => {
 	)
 
 	await screen.findByTestId('graphql-error')
-	debug()
 	expect(container).toHaveTextContent('Shoot!')
 })

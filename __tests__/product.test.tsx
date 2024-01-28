@@ -15,10 +15,9 @@ describe('<ProductCard/>', () => {
 		expect(priceTag).toBeInTheDocument()
 		const link = container.querySelector('a')
 		if (link) {
-			debug(link)
 			expect(link).toHaveAttribute('href', '/product/abc123')
-			expect(link).toHaveTextContent('dogs are best')
 		}
+		expect(container).toHaveTextContent(fakeProduct.name)
 	})
 })
 
