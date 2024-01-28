@@ -3,7 +3,6 @@ import { PRODUCT_QUERY } from '../src/lib/graphQL/queries/productQuery'
 import { fakeProduct } from '../src/lib/testUtils'
 import { MockedProvider } from '@apollo/client/testing'
 import SingleProduct from '../src/pages/products/SingleProduct'
-import '@testing-library/jest-dom'
 
 describe('<SingleProduct />', () => {
 	it('renders with correct data', async () => {

@@ -12,24 +12,24 @@ exports[`Renders and matches HTML Snapshot 1`] = `
         alt="dogs are best"
         src="dog.jpg"
       />
-      <h3
-        class="sc-gsTDqH dvgYyH"
-      >
-        <a
-          href="/product/abc123"
-        >
-          dogs are best
-        </a>
-      </h3>
-      <span
-        class="sc-dlfmHC dNTxCS"
-      >
-        $50
-      </span>
-      <p>
-        dogs
-      </p>
     </a>
+    <h3
+      class="sc-gsTDqH dvgYyH"
+    >
+      <a
+        href="/product/abc123"
+      >
+        dogs are best
+      </a>
+    </h3>
+    <span
+      class="sc-dlfmHC dNTxCS"
+    >
+      $50
+    </span>
+    <p>
+      dogs
+    </p>
     <div
       class="button-list"
     >

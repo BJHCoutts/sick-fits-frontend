@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import ProductCard from '../src/pages/products/ProductCard'
-import { fakeItem, fakeProduct } from '../src/lib/testUtils'
+import { fakeProduct } from '../src/lib/testUtils'
 import { MockedProvider } from '@apollo/client/testing'
-import '@testing-library/jest-dom'
 
 describe('<ProductCard/>', () => {
 	it('renders out the price and title', () => {

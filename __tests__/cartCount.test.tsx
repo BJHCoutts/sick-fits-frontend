@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react'
 import CartCount from '../src/components/CartCount'
-import '@testing-library/jest-dom'
 
 describe('<CartCount />', () => {
 	it('renders', () => {
