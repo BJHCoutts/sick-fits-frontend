@@ -17,24 +17,26 @@ export default function Pagination({ page }) {
 	const pageCount = Math.ceil(count / perPage)
 
 	return (
-		<SPagination>
+		<>
 			<Head>
 				<title>
 					{`
 					Sick Fits - Page ${page} of ${pageCount}
-				`}
+					`}
 				</title>
 			</Head>
-			<Link href={`/products/${page - 1}`} aria-disabled={page <= 1}>
-				◀️ Prev
-			</Link>
-			<p>
-				Page {page} of {pageCount}
-			</p>
-			<p>{count} Items Total</p>
-			<Link href={`/products/${page + 1}`} aria-disabled={page === pageCount}>
-				Next ▶️
-			</Link>
-		</SPagination>
+			<SPagination data-testid="pagination">
+				<Link href={`/products/${page - 1}`} aria-disabled={page <= 1}>
+					◀️ Prev
+				</Link>
+				<p>
+					Page {page} of {pageCount}
+				</p>
+				<p>{count} Items Total</p>
+				<Link href={`/products/${page + 1}`} aria-disabled={page === pageCount}>
+					Next ▶️
+				</Link>
+			</SPagination>
+		</>
 	)
 }

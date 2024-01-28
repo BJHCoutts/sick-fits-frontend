@@ -88,27 +88,27 @@ export const fakeCartItem = (overrides: {}): TCartItem => ({
 //   }
 // }
 
-// function makePaginationMocksFor(length:number) {
-//   return [
-//     {
-//       request: { query: PAGINATION_QUERY },
-//       result: {
-//         data: {
-//           _allProductsMeta: {
-//             count: length,
-//           },
-//           itemsConnection: {
-//             __typename: 'aggregate',
-//             aggregate: {
-//               count: length,
-//               __typename: 'count',
-//             },
-//           },
-//         },
-//       },
-//     },
-//   ];
-// }
+export function makePaginationMocksFor(length: number) {
+	return [
+		{
+			request: { query: PAGINATION_QUERY },
+			result: {
+				data: {
+					_allProductsMeta: {
+						count: length,
+					},
+					itemsConnection: {
+						__typename: 'aggregate',
+						aggregate: {
+							count: length,
+							__typename: 'count',
+						},
+					},
+				},
+			},
+		},
+	]
+}
 
 // export
 // makePaginationMocksFor,
