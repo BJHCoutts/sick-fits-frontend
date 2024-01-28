@@ -24,4 +24,41 @@ describe('<Pagination />', () => {
 		expect(pageCountSpan).toHaveTextContent('5')
 		expect(container).toMatchSnapshot()
 	})
+
+	it('disables prev button on first page', async () => {
+		const { container, debug } = render(
+			<MockedProvider mocks={makePaginationMocksFor(18)}>
+				<Pagination page={1} />
+			</MockedProvider>
+		)
+		await screen.findByTestId('pagination')
+		const prevButton = screen.getByText(/Prev/)
+		const nextButton = screen.getByText(/Next/)
+		expect(prevButton).toHaveAttribute('aria-disabled', 'true')
+		expect(nextButton).toHaveAttribute('aria-disabled', 'false')
+	})
+	it('disables next button on last page', async () => {
+		const { container, debug } = render(
+			<MockedProvider mocks={makePaginationMocksFor(18)}>
+				<Pagination page={5} />
+			</MockedProvider>
+		)
+		await screen.findByTestId('pagination')
+		const prevButton = screen.getByText(/Prev/)
+		const nextButton = screen.getByText(/Next/)
+		expect(prevButton).toHaveAttribute('aria-disabled', 'false')
+		expect(nextButton).toHaveAttribute('aria-disabled', 'true')
+	})
+	it('enables all buttons in middle pages', async () => {
+		const { container, debug } = render(
+			<MockedProvider mocks={makePaginationMocksFor(18)}>
+				<Pagination page={3} />
+			</MockedProvider>
+		)
+		await screen.findByTestId('pagination')
+		const prevButton = screen.getByText(/Prev/)
+		const nextButton = screen.getByText(/Next/)
+		expect(prevButton).toHaveAttribute('aria-disabled', 'false')
+		expect(nextButton).toHaveAttribute('aria-disabled', 'false')
+	})
 })
