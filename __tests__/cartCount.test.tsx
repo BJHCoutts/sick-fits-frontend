@@ -18,6 +18,7 @@ describe('<CartCount />', () => {
 		await waitFor(() => {
 			expect(container.textContent).toBe('13')
 		})
+
 		debug()
 	})
 })

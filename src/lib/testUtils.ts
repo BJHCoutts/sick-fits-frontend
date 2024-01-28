@@ -1,4 +1,4 @@
-// import casual from 'casual';
+import casual from 'casual'
 import { PAGINATION_QUERY } from './graphQL/queries/paginationQuery'
 import { TProduct } from './types/TProduct'
 
@@ -23,7 +23,7 @@ export const fakeProduct = {
 	status: 'AVAILABLE',
 }
 
-const fakeItem = (): TProduct => ({
+export const fakeItem = (): TProduct => ({
 	// __typename: 'Item',
 	id: 'abc123',
 	price: 5000,
@@ -40,16 +40,16 @@ const fakeItem = (): TProduct => ({
 	description: 'dogs',
 })
 
-// const fakeUser = ( overrides: { overrides:unknown } ) => ({
-//   __typename: 'User',
-//   id: '4234',
-//   name: casual.name,
-//   email: casual.email,
-//   permissions: ['ADMIN'],
-//   orders: [],
-//   cart: [],
-//   ...overrides,
-// });
+export const fakeUser = (overrides: { overrides: unknown }) => ({
+	__typename: 'User',
+	id: '4234',
+	name: casual.name,
+	email: casual.email,
+	permissions: ['ADMIN'],
+	orders: [],
+	cart: [],
+	...overrides,
+})
 
 // const fakeOrderItem = () => ({
 //   __typename: 'OrderItem',
@@ -127,12 +127,11 @@ const fakeItem = (): TProduct => ({
 //   ];
 // }
 
-export {
-	// makePaginationMocksFor,
-	// LocalStorageMock,
-	fakeItem,
-	// fakeUser,
-	// fakeCartItem,
-	// fakeOrder,
-	// fakeOrderItem,
-}
+export // makePaginationMocksFor,
+// LocalStorageMock,
+// fakeItem,
+// fakeUser,
+// fakeCartItem,
+// fakeOrder,
+// fakeOrderItem,
+ {}
