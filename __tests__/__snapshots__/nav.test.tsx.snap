@@ -24,3 +24,67 @@ exports[`<Nav /> Renders a minimal nav when signed out 1`] = `
   </nav>
 </div>
 `;
+
+exports[`<Nav /> renders a full nav when signed in 1`] = `
+<div>
+  <nav
+    class="sc-bdfCDU hTFCwp"
+  >
+    <ul>
+      <li>
+        <a
+          href="/products"
+        >
+          Products
+        </a>
+      </li>
+      <li>
+        <a
+          href="/sell"
+        >
+          Sell
+        </a>
+      </li>
+      <li>
+        <a
+          href="/orders"
+        >
+          Orders
+        </a>
+      </li>
+      <li>
+        <a
+          href="/account"
+        >
+          Account
+        </a>
+      </li>
+      <li>
+        <button
+          type="button"
+        >
+          Sign Out
+        </button>
+      </li>
+      <li>
+        <button
+          type="button"
+        >
+          My Cart
+          <span
+            class="sc-dlfmHC gBcOvK"
+          >
+            <div>
+              <div
+                class="sc-gsTDqH crGFiM count"
+              >
+                0
+              </div>
+            </div>
+          </span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

@@ -1,4 +1,7 @@
+import { TUser } from './TUser'
+
 export type TProduct = {
+	__typename?: string
 	id: string
 	name: string
 	description: string
@@ -12,4 +15,5 @@ export type TProduct = {
 		altText: string
 	}
 	status?: string
+	user?: null | TUser
 }

@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import ProductCard from '../src/pages/products/ProductCard'
-import { fakeProduct } from '../src/lib/testUtils'
 import { MockedProvider } from '@apollo/client/testing'
+import { fakeItem } from '../src/lib/testUtils'
+
+const fakeProduct = fakeItem()
 
 describe('<ProductCard/>', () => {
 	it('renders out the price and title', () => {

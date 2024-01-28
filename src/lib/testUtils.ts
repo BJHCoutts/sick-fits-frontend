@@ -1,38 +1,21 @@
 import casual from 'casual'
 import { PAGINATION_QUERY } from './graphQL/queries/paginationQuery'
 import { TProduct } from './types/TProduct'
+import { TCartItem } from './types/TCartItem'
+import { TUser } from './types/TUser'
 
 // seed it so we get consistent results
-// casual.seed( 777 );
-
-export const fakeProduct = {
-	// __typename: 'Item',
-	id: 'abc123',
-	price: 5000,
-	// user: null,
-	photo: {
-		id: 'abc123',
-		altText: 'dogs are best',
-		image: {
-			id: 'abc321',
-			publicUrlTransformed: 'dog.jpg',
-		},
-	},
-	name: 'dogs are best',
-	description: 'dogs',
-	status: 'AVAILABLE',
-}
+casual.seed(777)
 
 export const fakeItem = (): TProduct => ({
-	// __typename: 'Item',
+	__typename: 'Item',
 	id: 'abc123',
 	price: 5000,
-	// user: null,
+	user: null,
 	photo: {
 		id: 'abc123',
 		altText: 'dogs are best',
 		image: {
-			id: 'abc321',
 			publicUrlTransformed: 'dog.jpg',
 		},
 	},
@@ -40,7 +23,7 @@ export const fakeItem = (): TProduct => ({
 	description: 'dogs',
 })
 
-export const fakeUser = (overrides: { overrides: unknown }) => ({
+export const fakeUser = (overrides: {}): TUser => ({
 	__typename: 'User',
 	id: '4234',
 	name: casual.name,
@@ -73,14 +56,14 @@ export const fakeUser = (overrides: { overrides: unknown }) => ({
 //   user: fakeUser(),
 // });
 
-// const fakeCartItem = (overrides) => ({
-//   __typename: 'CartItem',
-//   id: 'omg123',
-//   quantity: 3,
-//   product: fakeItem(),
-//   user: fakeUser(),
-//   ...overrides,
-// });
+export const fakeCartItem = (overrides: {}): TCartItem => ({
+	__typename: 'CartItem',
+	id: 'omg123',
+	quantity: 3,
+	product: fakeItem(),
+	user: fakeUser({}),
+	...overrides,
+})
 
 // // Fake LocalStorage
 // class LocalStorageMock {
@@ -127,11 +110,11 @@ export const fakeUser = (overrides: { overrides: unknown }) => ({
 //   ];
 // }
 
-export // makePaginationMocksFor,
+// export
+// makePaginationMocksFor,
 // LocalStorageMock,
 // fakeItem,
 // fakeUser,
 // fakeCartItem,
 // fakeOrder,
 // fakeOrderItem,
- {}

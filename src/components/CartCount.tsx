@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
-export default function CartCount({ count }) {
+export default function CartCount({ count }: { count: number }) {
 	return (
 		<SAnimation>
 			<TransitionGroup>

@@ -51,6 +51,7 @@ function CartItem({
 				<h3>{product.name}</h3>
 				<p>
 					{formatMoney(product.price * quantity)}
+					<br />
 					<em>
 						{quantity} &times; {formatMoney(product.price)}
 					</em>

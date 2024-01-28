@@ -1,7 +1,10 @@
-import { TProduct } from "./TProduct"
+import { TProduct } from './TProduct'
+import { TUser } from './TUser'
 
 export type TCartItem = {
-		id: string
-		quantity: number
-		product: TProduct
+	__typename?: string
+	id: string
+	quantity: number
+	product: TProduct
+	user?: TUser
 }

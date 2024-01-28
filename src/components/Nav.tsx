@@ -35,9 +35,8 @@ export default function Nav() {
 								My Cart
 								<CartCount
 									count={user.cart.reduce(
-										(tally: number, cartItem: TCartItem) => {
-											tally + (cartItem.product ? cartItem.quantity : 0)
-										},
+										(tally: number, cartItem: TCartItem) =>
+											tally + (cartItem.product ? cartItem.quantity : 0),
 										0
 									)}
 								/>

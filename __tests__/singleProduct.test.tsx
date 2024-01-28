@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import { PRODUCT_QUERY } from '../src/lib/graphQL/queries/productQuery'
-import { fakeProduct } from '../src/lib/testUtils'
 import { MockedProvider } from '@apollo/client/testing'
 import SingleProduct from '../src/pages/products/SingleProduct'
+import { fakeItem } from '../src/lib/testUtils'
+
+const fakeProduct = fakeItem()
 
 describe('<SingleProduct />', () => {
 	it('renders with correct data', async () => {
