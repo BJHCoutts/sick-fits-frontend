@@ -3,6 +3,7 @@ import { PRODUCT_QUERY } from '../src/lib/graphQL/queries/productQuery'
 import { fakeProduct } from '../src/lib/testUtils'
 import { MockedProvider } from '@apollo/client/testing'
 import SingleProduct from '../src/pages/products/SingleProduct'
+import '@testing-library/jest-dom'
 
 describe('<SingleProduct />', () => {
 	it('renders with correct data', async () => {
@@ -32,28 +33,28 @@ describe('<SingleProduct />', () => {
 	})
 })
 
-// it('Errors out when product is not found', async () => {
-// 	const mockError = [
-// 		{
-// 			request: {
-// 				query: PRODUCT_QUERY,
-// 				variables: {
-// 					id: '123',
-// 				},
-// 			},
-// 			result: {
-// 				errors: [{ message: 'Product not found' }],
-// 			},
-// 		},
-// 	]
+it('Errors out when product is not found', async () => {
+	const mockError = [
+		{
+			request: {
+				query: PRODUCT_QUERY,
+				variables: {
+					id: '123',
+				},
+			},
+			result: {
+				errors: [{ message: 'Product not found' }],
+			},
+		},
+	]
 
-// 	const { container, debug } = render(
-// 		<MockedProvider mocks={mockError}>
-// 			<SingleProduct id="123" />
-// 		</MockedProvider>
-// 	)
+	const { container, debug } = render(
+		<MockedProvider mocks={mockError}>
+			<SingleProduct id="123" />
+		</MockedProvider>
+	)
 
-// 	await screen.findByTestId('graphql-error')
-// 	debug()
-// 	expect(container).toHaveTextContent('Shoot!')
-// })
+	await screen.findByTestId('graphql-error')
+	debug()
+	expect(container).toHaveTextContent('Shoot!')
+})
