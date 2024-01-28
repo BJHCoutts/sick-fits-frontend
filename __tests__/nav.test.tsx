@@ -5,6 +5,7 @@ import { CartStateProvider } from '../src/lib/context/cartState'
 import { MockedProvider } from '@apollo/client/testing'
 import Nav from '../src/components/Nav'
 import wait from 'waait'
+import { act } from 'react-dom/test-utils'
 
 const notSignedInMocks = [
 	{
@@ -42,10 +43,12 @@ describe('<Nav />', () => {
 				</MockedProvider>
 			</CartStateProvider>
 		)
+		debug()
 		expect(container).toHaveTextContent('Sign In / Up')
 		expect(container).toMatchSnapshot()
 		const link = screen.getByText('Sign In / Up')
 		expect(link).toHaveAttribute('href', '/signin')
+		debug()
 	})
 
 	it('renders a full nav when signed in', async () => {
@@ -56,8 +59,8 @@ describe('<Nav />', () => {
 				</MockedProvider>
 			</CartStateProvider>
 		)
-		await screen.findByText('Account')
 
+		await screen.findByText('Account')
 		expect(container).toMatchSnapshot()
 		expect(container).toHaveTextContent('Sign Out')
 		expect(container).toHaveTextContent('My Cart')

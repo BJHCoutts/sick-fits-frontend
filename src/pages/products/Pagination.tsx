@@ -30,7 +30,7 @@ export default function Pagination({ page }) {
 					◀️ Prev
 				</Link>
 				<p>
-					Page {page} of {pageCount}
+					Page {page} of <span data-testid="pageCount">{pageCount}</span>
 				</p>
 				<p>{count} Items Total</p>
 				<Link href={`/products/${page + 1}`} aria-disabled={page === pageCount}>

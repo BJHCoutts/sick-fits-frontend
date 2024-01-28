@@ -16,11 +16,13 @@ export const fakeItem = (): TProduct => ({
 		id: 'abc123',
 		altText: 'dogs are best',
 		image: {
+			id: 'abc123',
 			publicUrlTransformed: 'dog.jpg',
 		},
 	},
 	name: 'dogs are best',
 	description: 'dogs',
+	status: 'AVAILABLE',
 })
 
 export const fakeUser = (overrides: {}): TUser => ({
