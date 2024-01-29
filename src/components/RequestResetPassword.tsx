@@ -30,7 +30,7 @@ export default function RequestResetPassword() {
 				<DisplayError error={error} />
 				<fieldset disabled={loading} aria-busy={loading}>
 					{data?.sendUserPasswordResetLink === null && (
-						<p>
+						<p data-testid="success-message">
 							Success! Password has been changed. Enter the ?token=token query
 							string into the URL <Link href={`/reset`}>here</Link>
 						</p>

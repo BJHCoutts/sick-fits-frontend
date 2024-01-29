@@ -3,9 +3,8 @@ import { REQUEST_RESET_PASSWORD_MUTATION } from '../src/lib/graphQL/mutations/re
 import { MockedProvider } from '@apollo/client/testing'
 import RequestResetPassword from '../src/components/RequestResetPassword'
 import userEvent from '@testing-library/user-event'
-import wait from 'waait'
 
-const email = 'bjhcoutts@gmail.com'
+const email = 'test@example.com'
 const mocks = [
 	{
 		request: {
@@ -13,9 +12,7 @@ const mocks = [
 			variables: { email },
 		},
 		result: {
-			data: {
-				sendUserPasswordResetLink: null,
-			},
+			data: { sendUserPasswordResetLink: null },
 		},
 	},
 ]
@@ -31,19 +28,22 @@ describe('<RequestReset />', () => {
 	})
 
 	it(' calls the mutation when submitted', async () => {
-		const { container } = render(
+		const { container, debug } = render(
 			<MockedProvider mocks={mocks}>
 				<RequestResetPassword />
 			</MockedProvider>
 		)
+
 		userEvent.type(screen.getByPlaceholderText(/email/i), email)
 
 		userEvent.click(screen.getByTestId('request-reset-password'))
-		// userEvent.click(screen.getByText(/Request Password Reset/i))
 
-		// userEvent.click(screen.getByText(/Request Password Reset/))
-
-		// const success = await screen.findByTestId('success-message')
+		// const success = await screen.findByText(/success/i)
+		// debug()
+		// TODO Success message not being triggered in test, investigate why
+		// await waitFor(() => {
+		// 	expect(success).toBeInTheDocument()
+		// })
 		// expect(success).toBeInTheDocument()
 	})
 })
