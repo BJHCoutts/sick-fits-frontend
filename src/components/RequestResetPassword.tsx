@@ -46,7 +46,9 @@ export default function RequestResetPassword() {
 							onChange={handleChange}
 						/>
 					</label>
-					<button type="submit">Request Password Reset</button>
+					<button type="submit" data-testid="request-reset-password">
+						Request Password Reset
+					</button>
 				</fieldset>
 			</SForm>
 		</>

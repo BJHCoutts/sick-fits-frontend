@@ -1,11 +1,10 @@
 import { fakeUser } from '../src/lib/testUtils'
 import { SIGN_UP_MUTATION } from '../src/lib/graphQL/mutations/signUpMutation'
-import { CURRENT_USER_QUERY } from '../src/lib/graphQL/queries/currentUserQuery'
+// import { CURRENT_USER_QUERY } from '../src/lib/graphQL/queries/currentUserQuery'
 import { MockedProvider } from '@apollo/client/testing'
 import { render, screen } from '@testing-library/react'
 import SignUp from '../src/components/SignUp'
 import userEvent from '@testing-library/user-event'
-import wait from 'waait'
 
 const user = fakeUser()
 const password = 'password'
@@ -31,10 +30,10 @@ const mocks = [
 			},
 		},
 	},
-	{
-		request: { query: CURRENT_USER_QUERY },
-		result: { data: { authenticatedItem: user } },
-	},
+	// {
+	// 	request: { query: CURRENT_USER_QUERY },
+	// 	result: { data: { authenticatedItem: user } },
+	// },
 ]
 
 describe('<SignUp />', () => {
@@ -45,7 +44,6 @@ describe('<SignUp />', () => {
 			</MockedProvider>
 		)
 		expect(container).toMatchSnapshot()
-		debug()
 
 		await userEvent.type(screen.getByPlaceholderText('Your Name'), user.name)
 

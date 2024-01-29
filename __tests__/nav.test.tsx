@@ -43,12 +43,10 @@ describe('<Nav />', () => {
 				</MockedProvider>
 			</CartStateProvider>
 		)
-		debug()
 		expect(container).toHaveTextContent('Sign In / Up')
 		expect(container).toMatchSnapshot()
 		const link = screen.getByText('Sign In / Up')
 		expect(link).toHaveAttribute('href', '/signin')
-		debug()
 	})
 
 	it('renders a full nav when signed in', async () => {
