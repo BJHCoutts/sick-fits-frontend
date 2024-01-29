@@ -44,9 +44,10 @@ export default function RequestResetPassword() {
 							autoComplete="email"
 							value={inputs.email}
 							onChange={handleChange}
+							id="email"
 						/>
 					</label>
-					<button type="submit" data-testid="request-reset-password">
+					<button type="submit" data-testid="request-reset-password-button">
 						Request Password Reset
 					</button>
 				</fieldset>

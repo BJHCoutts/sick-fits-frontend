@@ -17,7 +17,7 @@ const mocks = [
 	},
 ]
 
-describe('<RequestReset />', () => {
+describe('<RequestResetPassword />', () => {
 	it('renders and matches snapshot', () => {
 		const { container } = render(
 			<MockedProvider>
@@ -34,9 +34,14 @@ describe('<RequestReset />', () => {
 			</MockedProvider>
 		)
 
-		userEvent.type(screen.getByPlaceholderText(/email/i), email)
+		// debug(screen.getByLabelText('Email'))
+		const emailInput = screen.getByLabelText('Email')
+		userEvent.type(emailInput, email)
 
-		userEvent.click(screen.getByTestId('request-reset-password'))
+		debug(emailInput)
+		// expect(screen.getByDisplayValue(email)).toBeInTheDocument()
+
+		// userEvent.click(screen.getByTestId('request-reset-password-button'))
 
 		// const success = await screen.findByText(/success/i)
 		// debug()
