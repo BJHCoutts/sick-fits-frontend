@@ -43,13 +43,15 @@ export default function SignUp() {
 					disabled={sULoading || sILoading}
 					aria-busy={sULoading || sILoading}
 				>
-					{sUData?.createUser && <p>Signed Up with {sUData.createUser.name}</p>}
+					{sUData?.createUser && (
+						<p>Signed Up with {sUData.createUser.email}</p>
+					)}
 					<label htmlFor="email">
 						Email
 						<input
 							type="email"
 							name="email"
-							placeholder="Your Email Address"
+							placeholder="Your Email"
 							autoComplete="email"
 							value={inputs.email}
 							onChange={handleChange}
@@ -77,6 +79,7 @@ export default function SignUp() {
 							autoComplete="password"
 							value={inputs.password}
 							onChange={handleChange}
+							data-testid="password"
 						/>
 					</label>
 					<button type="submit">Sign Up</button>
