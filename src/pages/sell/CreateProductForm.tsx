@@ -7,6 +7,7 @@ import { ALL_PRODUCTS_QUERY } from '../../lib/graphQL/queries/allProductsQuery'
 import { useRouter } from 'next/router'
 
 export default function CreateProductForm() {
+	const router = useRouter()
 	const { inputs, handleChange, clearForm } = useForm({
 		image: '',
 		name: '',
@@ -22,20 +23,20 @@ export default function CreateProductForm() {
 		}
 	)
 
-	const router = useRouter()
+	async function handleSubmit(e: React.SyntheticEvent) {
+		// e.preventDefault()
+		// console.log('PRESSED')
+		// const res = await createProduct()
+		// console.log(inputs.image)
+		// clearForm()
+		router.push({
+			pathname: `/product/${res.data.createProduct.id}`,
+		})
+	}
 
 	return (
 		<>
-			<SForm
-				onSubmit={async (e) => {
-					e.preventDefault()
-					const res = await createProduct()
-					clearForm()
-					router.push({
-						pathname: `/product/${res.data.createProduct.id}`,
-					})
-				}}
-			>
+			<SForm>
 				<DisplayError error={error} />
 				<fieldset disabled={loading} aria-busy={loading}>
 					<label htmlFor="image">
@@ -87,7 +88,9 @@ export default function CreateProductForm() {
 						<button type="button" onClick={clearForm}>
 							Clear Form
 						</button>
-						<button type="submit">+ Add Product</button>
+						<button type="button" onClick={handleSubmit}>
+							+ Add Product
+						</button>
 					</div>
 				</fieldset>
 			</SForm>

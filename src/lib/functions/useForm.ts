@@ -1,46 +1,48 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 
-export default function useForm ( initial = {} )
-{
-	const [ inputs, setInputs ] = useState( initial )
+export default function useForm(initial = {}) {
+	const [inputs, setInputs] = useState(initial)
 	const initialValues = Object.values(initial).join('')
 
-	useEffect( () =>
-	{
+	useEffect(() => {
 		setInputs(initial)
 	}, [initialValues])
-	
-	function handleChange ( e: ChangeEvent<HTMLInputElement> )
-	{
-		let { value, name, type }:{ value:string|number, name:string, type: string} = e.target 
-		if ( type === 'number' )
-		{
+
+	function handleChange(
+		e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+	) {
+		let {
+			value,
+			name,
+			type,
+		}: { value: string | number; name: string; type: string } = e.target
+		if (type === 'number') {
 			value = parseInt(value)
 		}
-		if ( type === 'file' )
-		{
-			[value] = e.target.files
+		if (type === 'file') {
+			;[value] = e.target.files
 		}
-		setInputs( {
+		setInputs({
 			...inputs,
-			[name]: value
+			[name]: value,
 		})
 	}
 
-	function resetForm ()
-	{
+	function resetForm() {
 		setInputs(initial)
 	}
 
-	function clearForm ()
-	{
+	function clearForm() {
 		const blankState = Object.fromEntries(
-			Object.entries(inputs).map(( [ key, value ] ) => [key, ''])
+			Object.entries(inputs).map(([key, value]) => [key, ''])
 		)
 		setInputs(blankState)
 	}
 
 	return {
-		inputs, handleChange, resetForm, clearForm
+		inputs,
+		handleChange,
+		resetForm,
+		clearForm,
 	}
 }

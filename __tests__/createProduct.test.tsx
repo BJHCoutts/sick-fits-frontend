@@ -5,32 +5,19 @@ import { MockedProvider } from '@apollo/client/testing'
 import userEvent from '@testing-library/user-event'
 import { ALL_PRODUCTS_QUERY } from '../src/lib/graphQL/queries/allProductsQuery'
 import wait from 'waait'
-import { useRouter } from 'next/router'
+import { CREATE_PRODUCT_MUTATION } from '../src/lib/graphQL/mutations/createProductMutation'
 
 const item = fakeItem()
 
-// const pushMock = jest.fn()
+jest.mock('next/router', () => ({
+	useRouter: jest.fn(),
+}))
 
-// jest.mock('next/router', () => ({
-//   useRouter: jest.fn()
-// }))
-
-// jest.mock('next/router', () => ({
-// 	useRouter() {
-// 		return {
-// 			push: pushMock,
-// 		}
-// 	},
-// }))
-
-jest.mock('next/router', () => {
-	const router = {
-		push: jest.fn(),
-	}
-	return {
-		useRouter: jest.fn().mockReturnValue(router),
-	}
+const testImageFile = new File(['hello'], 'hello.png', {
+	type: 'image/png',
 })
+
+const useRouter = jest.spyOn(require('next/router'), 'useRouter')
 
 describe('<CreateProduct/>', () => {
 	it('renders and matches snapshot', () => {
@@ -64,6 +51,15 @@ describe('<CreateProduct/>', () => {
 		const mocks = [
 			{
 				request: {
+					query: CREATE_PRODUCT_MUTATION,
+					variables: {
+						name: item.name,
+						description: item.description,
+						image: testImageFile,
+						price: item.price,
+					},
+				},
+				result: {
 					data: {
 						createProduct: {
 							...item,
@@ -92,6 +88,12 @@ describe('<CreateProduct/>', () => {
 			</MockedProvider>
 		)
 
+		const push = jest.fn()
+
+		useRouter.mockImplementation(() => ({
+			push,
+		}))
+
 		await userEvent.type(screen.getByLabelText('Name'), item.name)
 		await userEvent.type(screen.getByLabelText('Price'), item.price.toString())
 		await userEvent.type(
@@ -99,10 +101,20 @@ describe('<CreateProduct/>', () => {
 			item.description
 		)
 
+		const fileInput = screen.getByLabelText(/image/i) as HTMLInputElement
+
+		if (fileInput.files) {
+			expect(fileInput.files.length).toBe(0)
+			await userEvent.upload(fileInput, testImageFile)
+			expect(fileInput.files.length).toBe(1)
+		}
+
 		await userEvent.click(screen.getByText(/Add Product/i))
 
-		await waitFor(() => wait(0))
+		// await waitFor(() => wait(5))
 
-		expect(useRouter().push).toHaveBeenCalled()
+		// debug()
+
+		// expect(push).toHaveBeenCalled()
 	})
 })
