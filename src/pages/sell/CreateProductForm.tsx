@@ -32,7 +32,7 @@ export default function CreateProductForm() {
 					const res = await createProduct()
 					clearForm()
 					router.push({
-						pathname: `/products/${res.data.createProduct.id}`,
+						pathname: `/product/${res.data.createProduct.id}`,
 					})
 				}}
 			>
