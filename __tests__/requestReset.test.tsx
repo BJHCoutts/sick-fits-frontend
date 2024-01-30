@@ -34,21 +34,13 @@ describe('<RequestResetPassword />', () => {
 			</MockedProvider>
 		)
 
-		// debug(screen.getByLabelText('Email'))
 		const emailInput = screen.getByLabelText('Email')
-		userEvent.type(emailInput, email)
+		await userEvent.type(emailInput, email)
 
-		debug(emailInput)
-		// expect(screen.getByDisplayValue(email)).toBeInTheDocument()
+		await userEvent.click(screen.getByTestId('request-reset-password-button'))
 
-		// userEvent.click(screen.getByTestId('request-reset-password-button'))
+		const success = await screen.findByText(/success/i)
 
-		// const success = await screen.findByText(/success/i)
-		// debug()
-		// TODO Success message not being triggered in test, investigate why
-		// await waitFor(() => {
-		// 	expect(success).toBeInTheDocument()
-		// })
-		// expect(success).toBeInTheDocument()
+		expect(success).toBeInTheDocument()
 	})
 })
