@@ -83,7 +83,7 @@ describe('<CreateProduct/>', () => {
 		]
 
 		const { container, debug } = render(
-			<MockedProvider>
+			<MockedProvider mocks={mocks}>
 				<CreateProductForm />
 			</MockedProvider>
 		)
@@ -111,10 +111,8 @@ describe('<CreateProduct/>', () => {
 
 		await userEvent.click(screen.getByText(/Add Product/i))
 
-		// await waitFor(() => wait(5))
+		await waitFor(() => wait(5))
 
-		// debug()
-
-		// expect(push).toHaveBeenCalled()
+		expect(push).toHaveBeenCalled()
 	})
 })

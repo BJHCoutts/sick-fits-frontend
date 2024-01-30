@@ -24,11 +24,11 @@ export default function CreateProductForm() {
 	)
 
 	async function handleSubmit(e: React.SyntheticEvent) {
-		// e.preventDefault()
-		// console.log('PRESSED')
-		// const res = await createProduct()
-		// console.log(inputs.image)
-		// clearForm()
+		e.preventDefault()
+		console.log('PRESSED')
+		const res = await createProduct()
+		console.log(inputs.image)
+		clearForm()
 		router.push({
 			pathname: `/product/${res.data.createProduct.id}`,
 		})
